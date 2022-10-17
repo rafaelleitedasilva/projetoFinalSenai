@@ -1,0 +1,18 @@
+/* NAVBAR */
+
+::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+
+::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(to bottom, rgb(255, 109, 109), black);
+}
+
+#layout-menu{
+    position: fixed;
+}
+
+.layout-content-navbar{
+    padding-left: 10%;
+}
