@@ -2796,7 +2796,7 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #5f61e6;
+  color: #e65f5f;
 }
 .btn-link:disabled, .btn-link.disabled {
   color: rgba(67, 89, 113, 0.6);
@@ -3278,7 +3278,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #5f61e6;
+  color: #e65f5f;
 }
 .nav-link.disabled {
   color: #c7cdd4;
@@ -5561,7 +5561,7 @@ textarea.form-control-lg {
   color: #F23730;
 }
 .link-primary:hover, .link-primary:focus {
-  color: #5f61e6;
+  color: #e65f5f;
 }
 
 .link-secondary {

@@ -100,7 +100,7 @@
 }
 
 .text-body[href]:hover {
-  color: #5f61e6 !important;
+  color: #e65f5f !important;
 }
 
 .bg-primary {
@@ -108,7 +108,7 @@
 }
 
 a.bg-primary:hover, a.bg-primary:focus {
-  background-color: #6467f2 !important;
+  background-color: #e65f5f !important;
 }
 
 .dropdown-notifications-item:not(.mark-as-read) .dropdown-notifications-read span {
@@ -125,7 +125,7 @@ a.bg-primary:hover, a.bg-primary:focus {
 }
 
 .border-light-primary {
-  border: 3px solid rgba(105, 108, 255, 0.08);
+  border: 3px solid rgba(255, 105, 105, 0.08);
 }
 
 .page-item.active .page-link, .page-item.active .page-link:hover, .page-item.active .page-link:focus,
@@ -135,13 +135,13 @@ a.bg-primary:hover, a.bg-primary:focus {
   border-color: #F23730;
   background-color: #F23730;
   color: #fff;
-  box-shadow: 0 0.125rem 0.25rem rgba(105, 108, 255, 0.4);
+  box-shadow: 0 0.125rem 0.25rem rgba(255, 105, 105, 0.4);
 }
 
 .progress-bar {
   background-color: #F23730;
   color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4);
+  box-shadow: 0 2px 4px 0 rgba(255, 105, 105, 0.4);
 }
 
 .list-group-item-primary {
@@ -209,25 +209,25 @@ button.list-group-item-primary.active {
   color: #fff;
   background-color: #F23730;
   border-color: #F23730;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(255, 105, 105, 0.4);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #5f61e6;
-  border-color: #5f61e6;
+  background-color: #e65f5f;
+  border-color: #e65f5f;
   transform: translateY(-1px);
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #5f61e6;
-  border-color: #5f61e6;
+  background-color: #e65f5f;
+  border-color: #e65f5f;
   transform: translateY(0);
   box-shadow: none;
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #595cd9;
-  border-color: #595cd9;
+  background-color: #d95959;
+  border-color: #d95959;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: none;
@@ -243,22 +243,22 @@ button.list-group-item-primary.active {
 }
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #5f61e6;
-  border-color: #5f61e6;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  background-color: #e65f5f;
+  border-color: #e65f5f;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(255, 105, 105, 0.4);
   transform: translateY(-1px);
 }
 .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
   color: #fff;
-  background-color: #5f61e6;
-  border-color: #5f61e6;
+  background-color: #e65f5f;
+  border-color: #e65f5f;
   box-shadow: none;
   transform: translateY(0);
 }
 .btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
   color: #fff;
-  background-color: #595cd9;
-  border-color: #595cd9;
+  background-color: #d95959;
+  border-color: #d95959;
 }
 .btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
   box-shadow: none;
@@ -285,7 +285,7 @@ button.list-group-item-primary.active {
 
 .dropdown-item:not(.disabled).active,
 .dropdown-item:not(.disabled):active {
-  background-color: rgba(105, 108, 255, 0.08);
+  background-color: rgba(255, 105, 105, 0.08);
   color: #F23730 !important;
 }
 
@@ -296,13 +296,13 @@ button.list-group-item-primary.active {
 }
 
 .nav .nav-link:hover, .nav .nav-link:focus {
-  color: #5f61e6;
+  color: #e65f5f;
 }
 
 .nav-pills .nav-link.active, .nav-pills .nav-link.active:hover, .nav-pills .nav-link.active:focus {
   background-color: #F23730;
   color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4);
+  box-shadow: 0 2px 4px 0 rgba(255, 105, 105, 0.4);
 }
 
 .form-control:focus,
@@ -317,7 +317,7 @@ button.list-group-item-primary.active {
 
 .form-check-input:focus {
   border-color: #F23730;
-  box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4);
+  box-shadow: 0 2px 4px 0 rgba(255, 105, 105, 0.4);
 }
 .form-check-input:disabled {
   background-color: #eceef1;
@@ -325,7 +325,7 @@ button.list-group-item-primary.active {
 .form-check-input:checked, .form-check-input[type=checkbox]:indeterminate {
   background-color: #F23730;
   border-color: #F23730;
-  box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4);
+  box-shadow: 0 2px 4px 0 rgba(255, 105, 105, 0.4);
 }
 
 .custom-option.checked {
