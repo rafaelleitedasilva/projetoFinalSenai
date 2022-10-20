@@ -13,19 +13,3 @@
     position: fixed;
 }
 
-.layout-content-navbar{
-    padding-left: 10%;
-}
-
-.bi.bi-person-circle{
-    position: fixed;
-    width: 50px;
-    top: 10px;
-    right: 10px;
-    color: red;
-}
-
-.alinhaLogin{
-    position:fixed;
-    margin-left: 500px;
-}
