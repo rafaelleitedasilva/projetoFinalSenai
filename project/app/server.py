@@ -15,10 +15,18 @@ def home():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
     
 @app.route('/posts')
 def posts():
     return render_template('posts.html')
+
+@app.route('/tarefas')
+def tarefas():
+    return render_template('tarefas.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
