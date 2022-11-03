@@ -72,9 +72,13 @@ def login_screen():
           
 
 
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html')
+@app.route('/cadastroAluno')
+def cadastroAluno():
+    return render_template('cadastroAluno.html')
+
+@app.route('/calendar')
+def calendar():
+    return render_template('calendar.html')
     
 @app.route('/posts')
 def posts():

@@ -1,0 +1,76 @@
+{% include 'head.html' %}
+<div class="flex-cadastro">
+  <div class="cadastro">
+    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">INFORMAÇÕES DO ALUNO</h1>
+    
+    <form action = "{{ url_for('login_screen') }}" method = "post">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nome Completo</label>
+        <input type="text" class="form-control" name="nome" id="inome" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">CPF</label>
+        <input type="number" class="form-control" name="cpf" id="icpf" maxlength="11" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">RA</label>
+        <input type="password" class="form-control" name="ra" id="ira" maxlength="15" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Idade</label>
+        <input type="number" class="form-control" name="idade" id="iidade" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nome do Pai</label>
+        <input type="text" class="form-control" name="nome_pai" id="inome_pai" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nome da Mãe</label>
+        <input type="text" class="form-control" name="nome_mae" id="inome_mae" required>
+      </div>
+
+      <hr>
+      <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">ENDEREÇO</h1>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">RUA</label>
+        <input type="text" class="form-control" name="rua" id="irua" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">BAIRRO</label>
+        <input type="text" class="form-control" name="bairro" id="ibairro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">NÚMERO</label>
+        <input type="number" class="form-control" name="numero" id="inumero" required>
+      </div>
+
+      <hr>
+
+      <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">INFORMAÇÕES PARA LOGIN</h1>
+      
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
+        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Senha</label>
+        <input type="password" class="form-control" name="senha" id="senha" placeholder="********" required>
+      </div>
+      
+      <input type="submit" class="btn btn-danger" value="Cadastrar"> 
+    </form>
+    
+    
+  </div>
+</div>
+{{data}}
+{% include 'footer.html' %}
