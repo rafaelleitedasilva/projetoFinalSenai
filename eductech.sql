@@ -1,7 +1,20 @@
 create database eductech;
 
-use eductech;
+select * from teste_post;
+CREATE TABLE `eductech`.`atividades`(
+	`id_atividades` INT NOT NULL auto_increment,
+	`professor` VARCHAR(50),
+    `disciplina` VARCHAR(75),
+    `data_postagem` date,
+    `conteudo` VARCHAR(300),
+    PRIMARY KEY (`id_atividades`)
+    );
+    
+desc atividades;
+select * from `atividades`;
+INSERT INTO `atividades` VALUES (1,'mayara', 'pwbe', '2020-10-01', 'LOREM IN=ASOJKDAJDISAJDISJAIDSAJSIADJSAIDJSADAJDIAJSKJDA', '2010-10-25');
 
+ALTER TABLE `atividades` ADD COLUMN `data_entrega` date;
 CREATE TABLE `eductech`.`cadastro_aluno` (
   `RA` INT NOT NULL,
   `Nome` VARCHAR(45) NOT NULL,
@@ -55,7 +68,8 @@ CREATE TABLE `eductech`.`disciplinas` (
   `Sigla` VARCHAR(9) NOT NULL,
   `Nome_Curso` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Nome_Disciplina`));
-  
+select * from eductech.teste_post;
+SELECT * from eductech.teste_post WHERE nome_teste = 'teste_email@gmail' and senha_teste ='teste_senha';
 CREATE TABLE `eductech`.`curso`(
 	`Nome_Curso` VARCHAR(100) NOT NULL,
     /*FK*/ 

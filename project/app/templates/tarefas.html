@@ -2,8 +2,10 @@
 {%block conteudo %}
 <!-- Content -->
 <div class="filtro">
-    <input class="btn" style="width: 60px;" type="date" name="data-filtro" id="data-filtro">
+    <input id = 'date' class="btn" style="width: 60px;" type="date" name="data-filtro" id="data-filtro">
+   
 </div>
+
 <div class="flex-row">
     <div class="flex-column">
         <div class="card h-100 w-100">
@@ -30,19 +32,26 @@
             <div class="card-body">
                 <div class="flex-row">
                     <div class="flex-column">
-                        <p class="abv-mat">BD</p>
+                        <p class="abv-mat">{{materia}}</p>
                     </div>
                     <div class="flex-column">
-                        <h5 class="card-title">Ailton Adamilton Hamilton</h5>
-                        <h6 class="card-subtitle text-muted">25/10/2022</h6>
+                        <h5 class="card-title">{{professor}}</h5>
+                        <h6 class="card-subtitle text-muted">{{data_entrega}}</h6>                     
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <h5>Exercício de Modelagem de Dados 1</h5>
-                <p class="card-text text-justify">Uma floricultura deseja informatizar suas operações. Inicialmente, deseja manter um cadastro de todos os seus clientes, mantendo informações como: RG, nome, telefone e endereço. Deseja também manter um cadastro contendo informações sobre os produtos que vende, tais como: nome do produto, tipo (flor, vaso, planta,...), preço e quantidade em estoque. Quando um cliente faz uma compra, a mesma é armazenada, mantendo informação sobre o cliente que fez a compra, a data da compra, o valor total e os produtos comprados</p>
-            </div>
+                <h5>{{titulo-atv}}</h5>
+                <p class="card-text text-justify">{{conteudo-atv}}</p>
+            </div>            
         </div>
     </div>
 </div>
+
+
+<script>
+    console.log('aaaaaa')
+    let dateControl = document.getElementById('date');
+    console.log(dateControl.value)
+</script>
 {%endblock %}
