@@ -95,7 +95,7 @@ def envia():
 def cadastroProfessor():
     return render_template('cadastroProfessor.html')
 
-@app.route('/calendar')
+@app.route('/calendario')
 def calendario():
     return render_template('calendar.html')
 
