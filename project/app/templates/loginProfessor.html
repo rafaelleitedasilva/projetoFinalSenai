@@ -1,7 +1,7 @@
 {% include 'head.html' %}
 <div class="flex-login">
     <div class="login">
-        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">CADASTRO</h1>
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">LOGIN</h1>
 
         <form action = "{{ url_for('login_screen') }}" method = "post">
             <div class="mb-3">
@@ -16,13 +16,15 @@
             </div>
 
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Concordo com os <a href="termos2.html" target="_blank">termos</a></label>
             </div>
 
-            <input type="submit"> 
+            <div class="btn-flex-between">
+              <a href="/cadastroAluno" class="btn btn-danger">Cadastrar</a>
+              <input type="submit" class="btn btn-danger" value="Entrar">
+            </div>
           </form>
-
           
     </div>
 </div>

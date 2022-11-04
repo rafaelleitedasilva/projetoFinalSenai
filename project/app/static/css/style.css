@@ -14,9 +14,6 @@
     position: fixed;
 }
 
-.layout-navbar{
-    z-index: 2000 !important;
-}
 
 .w-45{
     width: 45%;
@@ -40,6 +37,55 @@
 
 .flex-row{
     display: flex;
+}
+
+.btn-flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.grupo-botao-login{
+    display: flex;
+    justify-content: center;
+}
+
+.opcao{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.professor{
+
+}
+
+.aluno{
+
+}
+
+.botao{
+    background-color: white !important;
+    border-radius: 0px 0px 25px 25px !important;
+    margin: 10px;
+}
+
+.botao:hover{
+    color: red;
+}
+
+.cadastro{
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    padding: 50px;
+
+}
+
+.cadastro h1{
+    text-align: center;
+    
 }
 
 .filtro{

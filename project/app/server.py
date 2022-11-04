@@ -27,7 +27,7 @@ def teste():
     fetchdata = cur.fetchall()
     cur.close()
     return render_template('teste_db.html', data= fetchdata)
-    
+
 @app.route('/login', methods = ['POST', 'GET'])
 def login_screen():
     if request.method == 'POST':
@@ -36,23 +36,93 @@ def login_screen():
         
         cursor.execute("SELECT * from eductech.teste_post WHERE nome_teste = '{}' AND senha_teste = '{}'".format(email, senha))
         dados = cursor.fetchone()
-        try:
-            if dados[0] == email and dados[1] == senha:
-                return redirect(url_for('home'))
-            # elif dados[0] != email and dados[1] != senha :
-            #     print('erro')
-        except:
-            msg = 'erro'
-            return render_template('login.html', data= msg)
-            
+        print(dados)
+        if dados:
+            return home()
+        else:
+            msg = 'erro' 
+            return render_template('login.html', data=msg)
+        # cursor_senha = mysql.connection.cursor_senha()
+        # cursor_senha.execute("SELECT * from eductech.teste_post WHERE senha_teste= '{}'".format(senha))
+        # yfetch = cursor_senha.fetchall()
+
+        
+        # if xfetch.rowcount ==1 : 
+        #     if senha != '' and QtdSenha[0][0] == senha:
+        #         # loginScreen.returnPressed.connect(funcao_principal())
+        #         funcao_principal() 
+        #         loginScreen.close()
+        #     else:
+        #         loginScreen.label_4.setText("Senha Incorreta")
+        # else:
+        #     loginScreen.label_4.setText("Email ou Nome de Usuário não encontrado")
+
+        # mysql.connection.commit()
+        # cursor_email.close()
+
+        # return render_template('login.html', data=xfetch)
+        # return render_template('home.html')
+
+    
 
     return render_template('login.html')
           
+@app.route('/opcaoProfessorAluno') 
+def opcaoProfessorAluno():
+    return render_template('opcaoProfessorAluno.html')
 
+@app.route('/loginAluno', methods = ['POST', 'GET'])
+def loginAluno():
+    if request.method == 'POST':
 
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html')
+        email = request.form['email']
+        senha = request.form['senha']
+        
+        cursor= mysql.connection.cursor()
+        cursor.execute("SELECT * from eductech.teste_post WHERE nome_teste = '{}' AND senha_teste = '{}'".format(email, senha))
+        dados = cursor.fetchone()
+        print(dados)
+        if dados:
+            return home()
+        else:
+            msg = 'erro' 
+            return render_template('login.html', data=msg)
+        # cursor_senha = mysql.connection.cursor_senha()
+        # cursor_senha.execute("SELECT * from eductech.teste_post WHERE senha_teste= '{}'".format(senha))
+        # yfetch = cursor_senha.fetchall()
+
+        
+        # if xfetch.rowcount ==1 : 
+        #     if senha != '' and QtdSenha[0][0] == senha:
+        #         # loginScreen.returnPressed.connect(funcao_principal())
+        #         funcao_principal() 
+        #         loginScreen.close()
+        #     else:
+        #         loginScreen.label_4.setText("Senha Incorreta")
+        # else:
+        #     loginScreen.label_4.setText("Email ou Nome de Usuário não encontrado")
+
+        # mysql.connection.commit()
+        # cursor_email.close()
+
+        # return render_template('login.html', data=xfetch)
+        # return render_template('home.html')
+
+    
+
+    return render_template('loginAluno.html')
+
+@app.route('/cadastroAluno')
+def cadastroAluno():
+    return render_template('cadastroAluno.html')
+
+@app.route('/cadastroProfessor')
+def cadastroProfessor():
+    return render_template('cadastroProfessor.html')
+
+@app.route('/calendar')
+def calendar():
+    return render_template('calendar.html')
     
 @app.route('/posts')
 def posts():
