@@ -7,7 +7,6 @@ from flask import (
 )
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-
 app = Flask(__name__)
 # - criando a conexao com o banco
 mysql = MySQL(app)
@@ -20,14 +19,6 @@ app.config['MYSQL_DB'] = 'eductech'
 @app.route('/')
 def home():
     return render_template('home.html')
-
-# @app.route('/teste_db') # , methods = ['POST', 'GET']
-# def teste():
-#     cur = mysql.connection.cursor()
-#     cur.execute('Select * from eductech.teste_post')
-#     fetchdata = cur.fetchall()
-#     cur.close()
-#     return render_template('teste_db.html', data= fetchdata)
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login_screen():
@@ -47,11 +38,10 @@ def login_screen():
         except:
                 msg = 'erro'
                 return render_template('login.html', data=msg)
-                
+                 
     return render_template('login.html')
-          
 
-
+    # rotas           
 @app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
@@ -64,7 +54,21 @@ def posts():
 def tarefas():
     return render_template('tarefas.html')
 
+@app.route('/cadastro-aluno')
+def cadastroAluno():
+    return render_template('cadastroAluno.html')
 
+@app.route('/cadastro-professor')
+def cadastroProfessor():
+    return render_template('cadastroProfessor.html')
+
+@app.route('/calendar')
+def calendario():
+    return render_template('calendar.html')
+
+# @app.route('/login-aluno')
+# def loginAluno():
+    # return render_template('')
 if __name__ == '__main__':
     app.run(debug=True)
 
