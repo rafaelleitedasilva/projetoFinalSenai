@@ -3,7 +3,7 @@
   <div class="cadastro">
     <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">CADASTRO DO ALUNO</h1>
     
-    <form action = "{{ url_for('login_screen') }}" method = "post">
+    <form action = "{{url_for('cadastroAluno')}}" method = "post" action="cadastroAluno">
       <div class="mb-3">
         <label for="inome" class="form-label">Nome Completo</label>
         <input type="text" class="form-control" name="nome" id="inome" required>
@@ -11,17 +11,16 @@
       
       <div class="mb-3">
         <label for="icpf" class="form-label">CPF</label>
-        <input type="number" class="form-control" name="cpf" id="icpf" maxlength="11" required>
+        <input type="number" class="form-control" name="cpf" id="icpf" maxlength="11" >
       </div>
 
       <div class="mb-3">
-        <label for="ira" class="form-label">RA</label>
-        <input type="password" class="form-control" name="ra" id="ira" maxlength="15" required>
+        <label for="ira" class="form-label">RG</label>
       </div>
 
       <div class="mb-3">
         <label for="iidade" class="form-label">Idade</label>
-        <input type="number" class="form-control" name="idade" id="iidade" required>
+        <input type="number" class="form-control" name="idade" id="iidade" >
       </div>
 
       <div class="mb-3">
@@ -36,27 +35,27 @@
 
       <div class="mb-3">
         <label for="inome_pai" class="form-label">Nome do Pai</label>
-        <input type="text" class="form-control" name="nome_pai" id="inome_pai" required>
+        <input type="text" class="form-control" name="nome_pai" id="inome_pai" >
       </div>
 
       <div class="mb-3">
         <label for="inome_mae" class="form-label">Nome da Mãe</label>
-        <input type="text" class="form-control" name="nome_mae" id="inome_mae" required>
+        <input type="text" class="form-control" name="nome_mae" id="inome_mae" >
       </div>
 
       <div class="mb-3">
         <label for="iendereco" class="form-label">ENDEREÇO</label>
-        <input type="text" class="form-control" name="endereco" id="iendereco" required>
+        <input type="text" class="form-control" name="endereco" id="iendereco" >
       </div>
 
       <div class="mb-3">
         <label for="itelefone" class="form-label">Telefone</label>
-        <input type="tel" class="form-control" name="telefone" id="itelefone" aria-describedby="emailHelp" required>
+        <input type="tel" class="form-control" name="telefone" id="itelefone" aria-describedby="emailHelp" >
       </div>
 
       <div class="mb-3">
         <label for="iemail" class="form-label">Endereço de Email</label>
-        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" required>
+        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" >
       </div>
       
       <div class="mb-3">

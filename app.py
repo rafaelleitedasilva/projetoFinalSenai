@@ -31,6 +31,7 @@ def login_screen():
         cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
         dados = cursor.fetchone()
 
+
         print(dados)
         try: 
             if dados[14]== email and dados[15] == senha:
@@ -54,9 +55,41 @@ def posts():
 def tarefas():
     return render_template('tarefas.html')
 
-@app.route('/cadastro-aluno')
+@app.route('/cadastrar_aluno',  methods = ['POST'])
 def cadastroAluno():
-    return render_template('cadastroAluno.html')
+    if request.method == 'POST': 
+        try: 
+            insertForm =("INSERT INTO eductech.cadastro_aluno (inome, isenha) VALUES('nome', 'senha'")
+            cursor2 = mysql.connection.cursor()
+            cursor2.execute(insertForm)
+            cursor2.commit()
+            return render_template('home.html')
+        except:
+            return render_template('cadastroAluno.html')
+
+def envia():
+    if request.method == 'POST': 
+        try: 
+            insertForm =("INSERT INTO eductech.cadastro_aluno (inome, isenha) VALUES('nome', 'senha'")
+            cursor2 = mysql.connection.cursor()
+            cursor2.execute(insertForm)
+            cursor2.commit()
+            return render_template('home.html')
+        except:
+            return render_template('cadastroAluno.html')
+
+# def insert(mysql, insertCmd):
+#      try:
+#         #connection = mysql.get_db()
+#         cursor = mysql.connect().cursor()
+#         cursor.execute(insertCmd)
+#         mysql.connect().commit()
+#         #mysql.connect().commit
+#         #connection.commit()
+#         return True
+#      except Exception as e:
+#         print("Problem inserting into db: " + str(e))
+#         return False
 
 @app.route('/cadastro-professor')
 def cadastroProfessor():
