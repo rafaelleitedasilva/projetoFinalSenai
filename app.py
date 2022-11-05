@@ -9,11 +9,11 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 app = Flask(__name__)
 # - criando a conexao com o banco
-mysql = MySQL(app)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'eductech'
+# mysql = MySQL(app)
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'eductech'
 
 # -- routes
 @app.route('/')
@@ -36,45 +36,45 @@ def tarefas():
 def cadastroAluno():
     return render_template('cadastroAluno.html')
 
-@app.route('/login', methods = ['POST', 'GET'])
-def login_screen():
-    if request.method == 'POST':
+# @app.route('/login', methods = ['POST', 'GET'])
+# def login_screen():
+#     if request.method == 'POST':
 
-        email = request.form['email']
-        senha = request.form['senha']
+#         email = request.form['email']
+#         senha = request.form['senha']
         
-        cursor= mysql.connection.cursor()
-        cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-        dados = cursor.fetchone()
+#         cursor= mysql.connection.cursor()
+#         cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
+#         dados = cursor.fetchone()
 
 
-        print(dados)
-        try: 
-            if dados[14]== email and dados[15] == senha:
-                return redirect(url_for('home'))  
-        except:
-                msg = 'erro'
-                return render_template('login.html', data=msg)
+#         print(dados)
+#         try: 
+#             if dados[14]== email and dados[15] == senha:
+#                 return redirect(url_for('home'))  
+#         except:
+#                 msg = 'erro'
+#                 return render_template('login.html', data=msg)
                  
-    return render_template('login.html')
+#     return render_template('login.html')
 
-@app.route('/insert', methods = ['POST'])
-def insert():
-    if request.method == 'POST': 
-        try: 
-            nome = request.form['nome']
-            senha = request.form['senha']
+# @app.route('/insert', methods = ['POST'])
+# def insert():
+#     if request.method == 'POST': 
+#         try: 
+#             nome = request.form['nome']
+#             senha = request.form['senha']
             
-            #insertForm = ("INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", (nome,senha))
+#             #insertForm = ("INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", (nome,senha))
                           
-            cursor2 = mysql.connection.cursor()
-            cursor2.execute(
-                "INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", 
-                (nome,senha))
-            mysql.connection.commit()
-            return render_template('home.html')
-        except:
-            return render_template('cadastroAluno.html')
+#             cursor2 = mysql.connection.cursor()
+#             cursor2.execute(
+#                 "INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", 
+#                 (nome,senha))
+#             mysql.connection.commit()
+#             return render_template('home.html')
+#         except:
+#             return render_template('cadastroAluno.html')
 
 @app.route('/cadastro-professor')
 def cadastroProfessor():
