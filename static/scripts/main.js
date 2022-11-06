@@ -1,7 +1,6 @@
 /**
  * Main
  */
-console.log(1111111111111111111111)
 'use strict';
 
 let menu, animate;
