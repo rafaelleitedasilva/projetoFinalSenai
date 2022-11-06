@@ -55,7 +55,7 @@ def login_screen():
         except:
                 msg = 'erro'
                 return render_template('login.html', data=msg)
-                 
+                
     return render_template('login.html')
 
 @app.route('/insert', methods = ['POST'])
@@ -66,7 +66,7 @@ def insert():
             senha = request.form['senha']
             
             #insertForm = ("INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", (nome,senha))
-                          
+            
             cursor2 = mysql.connection.cursor()
             cursor2.execute(
                 "INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", 
