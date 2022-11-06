@@ -76,7 +76,7 @@ def insert():
         except:
             return render_template('cadastroAluno.html')
 
-@app.route('/cadastro-professor')
+@app.route('/cadastrar_professor')
 def cadastroProfessor():
     return render_template('cadastroProfessor.html')
 

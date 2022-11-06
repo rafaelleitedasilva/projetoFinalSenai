@@ -1,7 +1,7 @@
 {% include 'head.html' %}
 <div class="flex-cadastro">
   <div class="cadastro">
-    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">CADASTRO DO ALUNO</h1>
+    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">CADASTRO DO ALUNO</h1>
     
     <form action = "{{url_for('insert')}}" method = "post">
       <div class="mb-3">
@@ -11,16 +11,17 @@
       
       <div class="mb-3">
         <label for="icpf" class="form-label">CPF</label>
-        <input type="number" class="form-control" name="cpf" id="icpf" maxlength="11" >
+        <input type="number" class="form-control" name="cpf" id="icpf">
       </div>
 
       <div class="mb-3">
         <label for="ira" class="form-label">RG</label>
+        <input type="number" class="form-control" name="cpf" id="icpf" >
       </div>
 
       <div class="mb-3">
-        <label for="iidade" class="form-label">Idade</label>
-        <input type="number" class="form-control" name="idade" id="iidade" >
+        <label for="inascimento" class="form-label">DATA DE NASCIMENTO</label>
+        <input type="date" class="form-control" name="nascimento" id="inascimento" maxlength="11" required>
       </div>
 
       <div class="mb-3">
@@ -31,16 +32,6 @@
           <option value="F">Feminino</option>
           <option value="O">Outro</option>
         </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="inome_pai" class="form-label">Nome do Pai</label>
-        <input type="text" class="form-control" name="nome_pai" id="inome_pai" >
-      </div>
-
-      <div class="mb-3">
-        <label for="inome_mae" class="form-label">Nome da Mãe</label>
-        <input type="text" class="form-control" name="nome_mae" id="inome_mae" >
       </div>
 
       <div class="mb-3">
@@ -60,7 +51,7 @@
       
       <div class="mb-3">
         <label for="isenha" class="form-label">Senha</label>
-        <input type="password" class="form-control" name="senha" id="senha" placeholder="********" required>
+        <input type="password" class="form-control" name="senha" id="senha" required>
       </div>
       
       <div class="btn-flex-between">

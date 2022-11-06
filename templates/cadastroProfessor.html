@@ -1,7 +1,7 @@
 {% include 'head.html' %}
 <div class="flex-cadastro">
   <div class="cadastro">
-    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">CADASTRO DO PROFESSOR</h1>
+    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">CADASTRO DO PROFESSOR</h1>
     
     <form action = "{{ url_for('login_screen') }}" method = "post">
       <div class="mb-3">
@@ -57,7 +57,7 @@
       
       <div class="mb-3">
         <label for="isenha" class="form-label">Senha</label>
-        <input type="password" class="form-control" name="senha" id="senha" placeholder="********" required>
+        <input type="password" class="form-control" name="senha" id="senha" required>
       </div>
       
       <div class="btn-flex-between">

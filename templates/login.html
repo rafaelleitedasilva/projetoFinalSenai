@@ -1,7 +1,7 @@
 {% include 'head.html' %}
 <div class="flex-login">
     <div class="login">
-        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">CADASTRO</h1>
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">LOGIN</h1>
 
         <form action = "{{ url_for('login_screen') }}" method = "post">
             <div class="mb-3">
@@ -20,8 +20,19 @@
               <label class="form-check-label" for="exampleCheck1">Concordo com os <a href="termos2.html" target="_blank">termos</a></label>
             </div>
 
-            <input type="submit"> 
+            <input class="btn btn-danger" type="submit" value="Entrar"> 
           </form>
+
+          <hr>
+
+          <div class="container-cadastro-login">
+            <p class="form-label">Caso ainda não tenha um login, selecione o seu respectivo objetivo: </p>
+            <div class="cadastro-login">
+              <a href="/cadastrar_aluno" class="btn btn-outline-danger">Cadastro de Aluno</a>
+              <a href="/cadastrar_professor" class="btn btn-outline-danger">Cadastro de Professor</a>
+            </div>
+
+          </div>
 
           
     </div>
