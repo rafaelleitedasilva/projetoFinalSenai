@@ -156,3 +156,7 @@ input[type=file]{
 .ajustePerfil{
     width: 100% !important;
 }
+
+.none{
+    display: none;
+}
