@@ -52,10 +52,6 @@ def posts():
 def tarefas():
     return render_template('tarefas.html')
 
-@app.route('/cadastrar_aluno')
-def cadastroAluno():
-    return render_template('cadastroAluno.html')
-
 @app.route('/login', methods = ['POST', 'GET'])
 def login_screen():
     if request.method == 'POST':
@@ -103,20 +99,5 @@ def insert():
         except:
             return render_template('cadastroAluno.html')
 
-@app.route('/cadastrar_professor')
-def cadastroProfessor():
-    return render_template('cadastroProfessor.html')
-
-@app.route('/calendario')
-def calendario():
-    return render_template('calendar.html')
-
-# @app.route('/login-aluno')
-# def loginAluno():
-    # return render_template('')
 if __name__ == '__main__':
     app.run(debug=True)
-
-""" @bp.route('/register', methods=('GET', 'POST'))
-def register():
-    return render_template('auth/register.html') """

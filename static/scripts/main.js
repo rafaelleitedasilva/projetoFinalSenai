@@ -116,7 +116,7 @@ let menu, animate;
   window.Helpers.setCollapsed(true, false);
 })();
 
-$( "p" ).click(function() {
-   $( this ).toggleClass( "highlight" );
+$("#profile").click(function() {
+   $("#filtroCurso").toggleClass("none");
 });  
 
