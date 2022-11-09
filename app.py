@@ -63,14 +63,21 @@ def insert():
     if request.method == 'POST': 
         try: 
             nome = request.form['nome']
+            cpf = request.form['cpf']
+            rg = request.form['rg']
+            dt_nasc = request.form['nascimento']
+            sexo = request.form['sexo']
+            end = request.form['endereco']
+            tel = request.form['telefone']
+            email = request.form['email']
             senha = request.form['senha']
-            
+            nm_pai =  request.form['nome_pai']
+            nm_mae =  request.form['nome_mae']
             #insertForm = ("INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", (nome,senha))
-            
             cursor2 = mysql.connection.cursor()
             cursor2.execute(
-                "INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", 
-                (nome,senha))
+                "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
             return render_template('home.html')
         except:
