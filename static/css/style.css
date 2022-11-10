@@ -109,10 +109,6 @@
     padding: 20px 0px;
 }
 
-.dropdown{
-    z-index: 2000;
-}
-
 .login{
     max-width: 400px;
 }
@@ -160,4 +156,8 @@ input[type=file]{
 
 .none{
     display: none;
+}
+
+a:hover{
+    color: rgb(124, 22, 22) !important;
 }
