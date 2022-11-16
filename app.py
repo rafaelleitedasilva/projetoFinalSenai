@@ -1,7 +1,6 @@
 import functools
 from flask import Flask,render_template, request
 from flask_mysqldb import MySQL
-from flask import Flask
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -32,7 +31,7 @@ def cadastroAluno():
 def cadastroProfessor():
     return render_template('cadastroProfessor.html')
 
-@app.route('/calendario')
+@app.route('/calendar')
 def calendario():
     return render_template('calendar.html')
 
