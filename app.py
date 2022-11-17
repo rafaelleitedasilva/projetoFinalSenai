@@ -11,9 +11,10 @@ app = Flask(__name__)
 mysql = MySQL(app)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
 app.config['MYSQL_DB'] = 'eductech'
-
+# lists data
+dados_aluno = []
 # -- routes
 @app.route('/')
 def home():
@@ -37,7 +38,10 @@ def calendario():
 
 @app.route('/perfilAluno')
 def perfilAluno():
-    return render_template('perfilAluno.html') 
+    print(dados_aluno, ' -------- - -  -- aqui é a pagina do perfil')
+    
+    
+    return render_template('perfilAluno.html', ra_bd = dados_aluno[0][0], nome_bd = dados_aluno[0][1] ,  rg_bd = dados_aluno[0][2] ,cpf_bd = dados_aluno[0][3],  data_nas_bd = dados_aluno[0][4] ,sexo_bd = dados_aluno[0][5], np_bd = dados_aluno[0][6], nm_bd = dados_aluno[0][7],  end_bd = dados_aluno[0][8], tel_bd = dados_aluno[0][9],  email_bd = dados_aluno[0][10] ,senha_bd = dados_aluno[0][11]) 
 
 @app.route('/perfilProfessor')
 def perfilProfessor():
@@ -61,11 +65,10 @@ def login_screen():
         cursor= mysql.connection.cursor()
         cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
         dados = cursor.fetchone()
-
-
-        print(dados)
+        dados_aluno.append(dados)
+        print(dados, ' aqui é a pagina  do login ')
         try: 
-            if dados[14]== email and dados[15] == senha:
+            if dados[10]== email and dados[11] == senha:
                 return redirect(url_for('home'))  
         except:
                 msg = 'erro'
@@ -88,14 +91,14 @@ def insert():
             senha = request.form['senha']
             nm_pai =  request.form['nome_pai']
             nm_mae =  request.form['nome_mae']
-            #insertForm = ("INSERT INTO eductech.cadastro_aluno (nome, senha) VALUES (%s, %s)", (nome,senha))
             cursor2 = mysql.connection.cursor()
             cursor2.execute(
                 "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
-            return render_template('home.html')
+            return render_template('login.html')
         except:
+            print('deu erro')
             return render_template('cadastroAluno.html')
 
 if __name__ == '__main__':

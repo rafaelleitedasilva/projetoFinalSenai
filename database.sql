@@ -16,7 +16,7 @@ INSERT INTO `atividades` VALUES (1,'mayara', 'pwbe', '2020-10-01', 'LOREM IN=ASO
 
 ALTER TABLE `atividades` ADD COLUMN `data_entrega` date;
 CREATE TABLE `eductech`.`cadastro_aluno` (
-  `RA` INT NOT NULL,
+  `RA` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
   `RG` INT NOT NULL,
   `CPF` INT NOT NULL,
@@ -26,13 +26,9 @@ CREATE TABLE `eductech`.`cadastro_aluno` (
   `Nome_mae` VARCHAR(45) NOT NULL,
   `Endereco` VARCHAR(150) NOT NULL,
   `Telefone` INT NOT NULL,
-  `Escola` VARCHAR(100) NOT NULL,
-  `Bloqueado` TINYINT NOT NULL,
-  /*FK*/
-  `Sigla` VARCHAR(10) NOT NULL,
-  `ID_Calendario` INT,
+  `email` VARCHAR(150) NOT NULL,
+  `senha` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`RA`));
-
 CREATE TABLE `eductech`.`cadastro_professor` (
   `NIF` VARCHAR(9) NOT NULL,
   `Nome` VARCHAR(70) NULL,

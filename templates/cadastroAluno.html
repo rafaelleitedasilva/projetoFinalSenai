@@ -4,6 +4,7 @@
     <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">CADASTRO DO ALUNO</h1>
     
     <form action = "{{url_for('insert')}}" method = "post">
+      
       <div class="mb-3">
         <label for="inome" class="form-label">Nome Completo</label>
         <input type="text" class="form-control" name="nome" id="nome" required>
@@ -11,12 +12,12 @@
       
       <div class="mb-3">
         <label for="icpf" class="form-label">CPF</label>
-        <input type="number" class="form-control" name="cpf" id="icpf">
+        <input type="number" class="form-control" name="cpf" id="icpf" required>
       </div>
 
       <div class="mb-3">
         <label for="ira" class="form-label">RG</label>
-        <input type="number" class="form-control" name="rg" id="icpf" >
+        <input type="number" class="form-control" name="rg" id="icpf"  required>
       </div>
 
       <div class="mb-3">
@@ -57,7 +58,7 @@
 
       <div class="mb-3">
         <label for="iemail" class="form-label">Endereço de Email</label>
-        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" >
+        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" required >
       </div>
     
     
