@@ -1,5 +1,5 @@
 create database eductech;
-
+use eductech;
 select * from teste_post;
 CREATE TABLE `eductech`.`atividades`(
 	`id_atividades` INT NOT NULL auto_increment,
