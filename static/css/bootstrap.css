@@ -48,6 +48,7 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color:rgb(138, 28, 28)
 }
 
 @-ms-viewport {
@@ -2115,7 +2116,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #dc3545;
+  color: rgb(220, 53, 69);
 }
 
 .invalid-tooltip {
@@ -2142,7 +2143,7 @@ textarea.form-control {
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
 .custom-select:invalid:focus,
 .custom-select.is-invalid:focus {
-  border-color: #dc3545;
+  border-color: rgb(220, 53, 69);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
@@ -2554,7 +2555,7 @@ fieldset:disabled a.btn {
 
 .btn-light.disabled, .btn-light:disabled {
   color: #212529;
-  background-color: #f8f9fa;
+  background-color: rgb(248, 249, 250);
   border-color: #f8f9fa;
 }
 

@@ -1,0 +1,14 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<section id="dashboard">
+    <div class="chart">
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart"></canvas>
+    </div>
+</section>
+
+<script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+{%endblock %}
