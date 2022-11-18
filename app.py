@@ -1,7 +1,6 @@
 import functools
 from flask import Flask,render_template, request
 from flask_mysqldb import MySQL
-from flask import Flask
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -16,6 +15,7 @@ app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
 app.config['MYSQL_DB'] = 'eductech'
 # lists data
 dados_aluno = []
+cad = []
 # -- routes
 @app.route('/')
 def home():
@@ -33,15 +33,46 @@ def cadastroAluno():
 def cadastroProfessor():
     return render_template('cadastroProfessor.html')
 
-@app.route('/calendario')
+@app.route('/calendar')
 def calendario():
     return render_template('calendar.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route('/perfilAluno')
 def perfilAluno():
-    print(dados_aluno, ' -------- - -  -- aqui é a pagina do perfil')
-    
-    
+
+    nome = request.form['nome']
+    cpf = request.form['cpf']
+    rg = request.form['rg']
+    dt_nasc = request.form['nascimento']
+    sexo = request.form['sexo']
+    end = request.form['endereco']
+    tel = request.form['telefone']
+    email = request.form['email']
+    senha = request.form['senha']
+    nm_pai =  request.form['nome_pai']
+    nm_mae =  request.form['nome_mae']
+    print(nome, ' ----------- NOME DA PAGINA PERFIL REQUEST')
+
+    if request.method == 'POST': 
+        try: 
+            
+            cursor= mysql.connection.cursor()
+            # cursor.execute(f"UPDATE eductech.cadastro_aluno SET Nome = '{nome}', RG = '{rg}', CPF  = '{cpf}', Data_Nascimento = '{dt_nasc}', Sexo = '{sexo}', email = '{email}', senha = '{senha}', Nome_pai = '{nm_pai}',Nome_mae = '{nm_mae}', Endereco = '{end}', Telefone = '{tel}' WHERE RA = '{dados_aluno[0][0]}'")    
+            ra_ = 1
+            cursor.execute("""
+       UPDATE eductech.cadastro_aluno
+       SET RA = %s Nome=%s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s
+       WHERE RA=%s
+    """, (ra_, nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_))
+            cursor.commit()
+            print(f'NUMEROS DE LINHAS AFETADAS : {cursor.rowcount}')
+            cursor.close()
+        except:
+            print('erro') 
     return render_template('perfilAluno.html', ra_bd = dados_aluno[0][0], nome_bd = dados_aluno[0][1] ,  rg_bd = dados_aluno[0][2] ,cpf_bd = dados_aluno[0][3],  data_nas_bd = dados_aluno[0][4] ,sexo_bd = dados_aluno[0][5], np_bd = dados_aluno[0][6], nm_bd = dados_aluno[0][7],  end_bd = dados_aluno[0][8], tel_bd = dados_aluno[0][9],  email_bd = dados_aluno[0][10] ,senha_bd = dados_aluno[0][11]) 
 
 @app.route('/perfilProfessor')
@@ -77,6 +108,7 @@ def login_screen():
                 
     return render_template('login.html')
 
+
 @app.route('/insert', methods = ['POST'])
 def insert():
     if request.method == 'POST': 
@@ -97,6 +129,9 @@ def insert():
                 "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
+            cad.append(email)
+            cad.append(senha)
+
             return render_template('login.html')
         except:
             print('deu erro')
