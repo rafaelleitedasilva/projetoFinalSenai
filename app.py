@@ -37,6 +37,10 @@ def cadastroProfessor():
 def calendario():
     return render_template('calendar.html')
 
+@app.route('/chat')
+def chat():
+    return render_template('chat.html')
+
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
