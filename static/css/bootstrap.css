@@ -35,6 +35,11 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.dark-mode:root{
+  --light: #000;
+  --dark: #fff;
+}
+
 *,
 *::before,
 *::after {

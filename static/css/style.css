@@ -164,3 +164,7 @@ input[type=file]{
 a:hover{
     color: rgb(124, 22, 22) !important;
 }
+
+.charts{
+    width:50%;
+}
