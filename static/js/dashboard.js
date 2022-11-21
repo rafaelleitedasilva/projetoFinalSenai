@@ -26,7 +26,7 @@ const data = {
     labels, 
     datasets: [{
         data:[211, 326, 358, 459, 111, 333, 543, 976, 345,],
-        label:["Teste maluco"],
+        label:["Evolução do Aluno"],
         fill: true,
         backgroundColor: gradient,
         borderColor: "#000",
