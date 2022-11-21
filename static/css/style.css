@@ -165,6 +165,11 @@ a:hover{
     color: rgb(124, 22, 22) !important;
 }
 
-.charts{
+.chart{
     width:50%;
+}
+
+#dashboard{
+    display: flex;
+    width:100%;
 }

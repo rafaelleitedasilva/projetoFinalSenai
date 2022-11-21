@@ -1,6 +1,7 @@
 // Pega os dados que estão dentro da div no html
 const ctx = document.getElementById('myChart').getContext("2d");
 const ctx2 = document.getElementById('myChart2').getContext("2d");
+const ctx3 = document.getElementById('myChart3').getContext("2d");
 
 let delayed;
 
@@ -49,6 +50,14 @@ const data2 = {
     }]
 }
 
+const data3 = {
+    labels, 
+    datasets: [{
+        data:[111, 222, 333, 444, 555, 666, 777, 888, 234,],
+        label:["Dashboard Pizza"],
+        fill: true, 
+    }]
+}
 const config = {
     type:'line',
     data:data,
@@ -115,8 +124,39 @@ const config2 = {
     }
 }
 
+const config3 = {
+    type:'pie',
+    data:data3,
+    options: {
+        responsive:true,
+        animation:{
+            onComplete: () => {
+                delayed = true;
+            },
+            delay: (context) => {
+                let delay = 0;
+                if(context.type === "data" && context.mode === "default" && !delayed){
+                    delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                }
+                return delay;
+            },
+        },
+        // Teste para transformação de dados (aqui no caso foi de centesimo para milhao)
+        scales: {
+            y: {
+                ticks:{
+                    callback: function(value){
+                        return '$' + value + "m";
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Constante que vai carregar todos os dados do gráfico 
 const myChart = new Chart(ctx, config);
 const myChart2 = new Chart(ctx2, config2);
+const myChart3 = new Chart(ctx3, config3);
 
 
