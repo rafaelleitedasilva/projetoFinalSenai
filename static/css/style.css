@@ -5,6 +5,16 @@
     width: 5px;
 }
 
+.d-flex.w-100.avatar.ml-2.mt-2.mb-2{
+    display: flex;
+    align-items: center;
+    
+}
+
+.coments-group{
+    height: fit-content;
+}
+
 .cadastro-login{
     display: flex;
     justify-content: space-between;
@@ -15,6 +25,10 @@
     margin: 10px 0px;
 }
 
+.wrap{
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
 
 .container-cadastro-login p{
     margin: 10px 0px !important;
