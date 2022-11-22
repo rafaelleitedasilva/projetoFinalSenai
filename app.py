@@ -11,7 +11,9 @@ app = Flask(__name__)
 mysql = MySQL(app)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
+# app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
+app.config['MYSQL_PASSWORD'] = ''
+
 app.config['MYSQL_DB'] = 'eductech'
 # lists data
 dados_aluno = []
@@ -45,38 +47,35 @@ def chat():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/perfilAluno')
+@app.route('/perfilAluno', methods = ['POST', 'GET'])
 def perfilAluno():
-
-    nome = request.form['nome']
-    cpf = request.form['cpf']
-    rg = request.form['rg']
-    dt_nasc = request.form['nascimento']
-    sexo = request.form['sexo']
-    end = request.form['endereco']
-    tel = request.form['telefone']
-    email = request.form['email']
-    senha = request.form['senha']
-    nm_pai =  request.form['nome_pai']
-    nm_mae =  request.form['nome_mae']
-    print(nome, ' ----------- NOME DA PAGINA PERFIL REQUEST')
-
+    print(dados_aluno)
+    ra_ = dados_aluno[0][0]
     if request.method == 'POST': 
         try: 
-            
+            nome = request.form['nome']
+            cpf = request.form['cpf']
+            rg = request.form['rg']
+            dt_nasc = request.form['nascimento']
+            sexo = request.form['sexo']
+            end = request.form['endereco']
+            tel = request.form['telefone']
+            email = request.form['email']
+            senha = request.form['senha']
+            nm_pai =  request.form['nome_pai']
+            nm_mae =  request.form['nome_mae']
+            print(nome, ' ----------- NOME DA PAGINA PERFIL REQUEST')
+
             cursor= mysql.connection.cursor()
-            # cursor.execute(f"UPDATE eductech.cadastro_aluno SET Nome = '{nome}', RG = '{rg}', CPF  = '{cpf}', Data_Nascimento = '{dt_nasc}', Sexo = '{sexo}', email = '{email}', senha = '{senha}', Nome_pai = '{nm_pai}',Nome_mae = '{nm_mae}', Endereco = '{end}', Telefone = '{tel}' WHERE RA = '{dados_aluno[0][0]}'")    
-            ra_ = 1
-            cursor.execute("""
-       UPDATE eductech.cadastro_aluno
-       SET RA = %s Nome=%s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s
-       WHERE RA=%s
-    """, (ra_, nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_))
+  
+            sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s where RA = %s""" 
+            data_qr = (nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_)
+            cursor.execute(sql_update_qr, data_qr)
             cursor.commit()
             print(f'NUMEROS DE LINHAS AFETADAS : {cursor.rowcount}')
             cursor.close()
-        except:
-            print('erro') 
+        except Exception as e :
+            print('erro: ', e) 
     return render_template('perfilAluno.html', ra_bd = dados_aluno[0][0], nome_bd = dados_aluno[0][1] ,  rg_bd = dados_aluno[0][2] ,cpf_bd = dados_aluno[0][3],  data_nas_bd = dados_aluno[0][4] ,sexo_bd = dados_aluno[0][5], np_bd = dados_aluno[0][6], nm_bd = dados_aluno[0][7],  end_bd = dados_aluno[0][8], tel_bd = dados_aluno[0][9],  email_bd = dados_aluno[0][10] ,senha_bd = dados_aluno[0][11]) 
 
 @app.route('/perfilProfessor')
@@ -106,9 +105,13 @@ def login_screen():
         try: 
             if dados[10]== email and dados[11] == senha:
                 return redirect(url_for('home'))  
-        except:
-                msg = 'erro'
+            else: 
+                msg = 'login nao confere'
                 return render_template('login.html', data=msg)
+        except Exception as e:
+                msg = 'erro ' 
+                
+                return render_template('login.html', data=msg, erro = e)
                 
     return render_template('login.html')
 
