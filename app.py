@@ -21,11 +21,11 @@ cad = []
 # -- routes
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('login.html')
           
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html')
+# @app.route('/cadastro')
+# def cadastro():
+#     return render_template('cadastro.html')
     
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
@@ -47,7 +47,7 @@ def chat():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/perfilAluno', methods = ['POST', 'GET'])
+@app.route('/perfilAluno', methods = ['POST'])
 def perfilAluno():
     print(dados_aluno)
     ra_ = dados_aluno[0][0]
@@ -65,9 +65,7 @@ def perfilAluno():
             nm_pai =  request.form['nome_pai']
             nm_mae =  request.form['nome_mae']
             print(nome, ' ----------- NOME DA PAGINA PERFIL REQUEST')
-
             cursor= mysql.connection.cursor()
-  
             sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s where RA = %s""" 
             data_qr = (nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_)
             cursor.execute(sql_update_qr, data_qr)
@@ -115,9 +113,8 @@ def login_screen():
                 
     return render_template('login.html')
 
-
 @app.route('/insert', methods = ['POST'])
-def insert():
+def insertAluno():
     if request.method == 'POST': 
         try: 
             nome = request.form['nome']
@@ -136,13 +133,41 @@ def insert():
                 "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
-            cad.append(email)
-            cad.append(senha)
-
             return render_template('login.html')
+            
         except:
             print('deu erro')
             return render_template('cadastroAluno.html')
+
+@app.route('/insertprof', methods=['GET', 'POST'])
+def insertProfessor():
+    if request.method == 'POST': 
+        try: 
+            nome = request.form['nome']
+            cpf = request.form['cpf']
+            rg = request.form['rg']
+            dt_nasc = request.form['nascimento']
+            sexo = request.form['sexo']
+            end = request.form['endereco']
+            tel = request.form['telefone']
+            email = request.form['email']
+            senha = request.form['senha']
+            formacao = request.form['formacao']
+            disc = request.form['disc']
+            b = 'b'
+            c = 'c'
+            cursor = mysql.connection.cursor()
+            cursor.execute( # , Data_Nascimento, CPF, RG, Endereco, Sexo, Telefone, Email, Senha, Nome_Disciplina
+                "INSERT INTO eductech.cadastro_professor (Nome, Formacao) VALUES (%s,%s)",(b, c) # ,%s,%s,%s,%s,%s,%s,%s,%s,%s
+                ) # , dt_nasc, cpf, rg, end, sexo, tel, email, senha, disc
+            mysql.connection.commit()
+            cursor.close()
+
+            return render_template('login.html')
+            
+        except Exception as e:
+            print(f'deu erro {e}')
+            return render_template('cadastroProfessor.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

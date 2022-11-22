@@ -3,7 +3,7 @@
   <div class="cadastro">
     <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">CADASTRO DO PROFESSOR</h1>
     
-    <form action = "{{ url_for('login_screen') }}" method = "post">
+    <form action = "{{url_for('insertProfessor')}}" method = "post">
       <div class="mb-3">
         <label for="inome" class="form-label">Nome Completo</label>
         <input type="text" class="form-control" name="nome" id="inome" required>
@@ -36,18 +36,18 @@
       </div>
 
       <div class="mb-3">
-        <label for="inif" class="form-label">NIF</label>
-        <input type="number" class="form-control" name="nif" id="inif" required>
-      </div>
-
-      <div class="mb-3">
         <label for="iendereco" class="form-label">ENDEREÇO</label>
         <input type="text" class="form-control" name="endereco" id="iendereco" required>
       </div>
 
       <div class="mb-3">
-        <label for="iescola" class="form-label">ESCOLA</label>
-        <input type="text" class="form-control" name="escola" id="iescola" required>
+        <label for="iescola" class="form-label">Formação</label>
+        <input type="text" class="form-control" name="formacao" id="iescola" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="iescola" class="form-label">Disciplina ministrada</label>
+        <input type="text" class="form-control" name="disc" id="iescola" required>
       </div>
 
       <div class="mb-3">
