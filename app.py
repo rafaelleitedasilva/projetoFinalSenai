@@ -20,6 +20,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'eductech'
 # lists data
 dados_aluno = []
+dados_prof = []
 cad = []
 # -- routes
 @app.route('/')
@@ -63,13 +64,11 @@ def perfilAluno():
             senha = request.form['senha']
             nm_pai =  request.form['nome_pai']
             nm_mae =  request.form['nome_mae']
-            print(nome, ' ----------- NOME DA PAGINA PERFIL REQUEST')
             cursor= mysql.connection.cursor()
             sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s where RA = %s""" 
             data_qr = (nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_)
             cursor.execute(sql_update_qr, data_qr)
             cursor.commit()
-            print(f'NUMEROS DE LINHAS AFETADAS : {cursor.rowcount}')
             cursor.close()
         except Exception as e :
             print('erro: ', e) 
@@ -90,24 +89,39 @@ def tarefas():
 @app.route('/login', methods = ['POST', 'GET'])
 def login_screen():
     if request.method == 'POST':
-
         email = request.form['email']
         senha = request.form['senha']
-        
         cursor= mysql.connection.cursor()
-        cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-        dados = cursor.fetchone()
-        dados_aluno.append(dados)
-        print(dados, ' aqui é a pagina  do login ')
-        try: 
-            if dados[10]== email and dados[11] == senha:
-                return redirect(url_for('home'))  
-            else: 
-                msg = 'login nao confere'
+        
+        if 'professor' in email:
+            cursor.execute("SELECT * from eductech.cadastro_professor WHERE email = '{}' AND senha = '{}'".format(email, senha))
+            dados = cursor.fetchone()
+            dados_prof.append(dados)
+            try: 
+                if dados[9]== email and dados[10] == senha:
+                    print('login de professor')  
+                    return redirect(url_for('home'))
+                else: 
+                    msg = 'login nao confere'
                 return render_template('login.html', data=msg)
-        except Exception as e:
+
+            except Exception as e:
                 msg = 'erro '                
                 return render_template('login.html', data=msg, erro = e)
+        elif 'aluno' in email:
+            cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
+            dados = cursor.fetchone()
+            dados_aluno.append(dados)
+            try: 
+                if dados[10]== email and dados[11] == senha:
+                    print('login de aluno')  
+                    return redirect(url_for('home'))  
+                else: 
+                    msg = 'login nao confere'
+                    return render_template('login.html', data=msg)
+            except Exception as e:
+                    msg = 'erro '                
+                    return render_template('login.html', data=msg, erro = e)
                 
     return render_template('login.html')
 
