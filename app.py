@@ -12,10 +12,10 @@ io = SocketIO(app)
 
 #- criando a conexao com o banco
 mysql = MySQL(app)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+app.config['MYSQL_USER'] = 'bee0845ec95fd8'
 # app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '1f0584b3'
 
 app.config['MYSQL_DB'] = 'eductech'
 # lists data
