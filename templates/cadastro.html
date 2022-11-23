@@ -1,0 +1,25 @@
+{% include 'head.html' %}
+<div class="flex-login">
+    <div class="login">
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">LOGIN</h1>
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="secretaria@senai.com">
+              <div id="emailHelp" class="form-text">Nós nunca iremos compartilhar o seu email com ninguém.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="senha" placeholder="********">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="radio" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Concordo com os <a href="termos2.html" target="_blank">termos</a></label>
+            </div>
+            <a href="" class="btn btn-danger" id="link" onclick="validar()">
+                Enviar
+            </a>
+          </form>
+    </div>
+</div>
+{% include 'footer.html' %}
