@@ -1,0 +1,26 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+{% for data in dados %}
+<div class="col-md-14 mb-3 posts">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="flex-row">
+                <div class="flex-column">
+                    <p class="abv-mat">a<p>
+                </div> 
+                <div class="flex-column">
+                    <h5 class="card-title">{{data.1}}</h5>
+                    <h6 class="card-subtitle text-muted">Instrutora</h6>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">{{data.7}}</p>
+            <img src="../static/vendor/img/cerveja-opa-bier-lata-350ml_7925.jpg">
+        </div>
+    </div>
+</div>
+<label><input type="file">(choose_file)</label>
+{% endfor %}
+{%endblock %}
+{% include 'footer.html' %}
