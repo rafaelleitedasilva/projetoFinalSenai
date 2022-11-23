@@ -182,3 +182,30 @@ a:hover{
     width:100%;
     margin: 20px;
 }
+
+.comunicado{
+    border-radius: 10px;
+    background-color: white !important;
+    margin: 20px 0px;
+    padding: 20px;
+}
+
+.comunicado>h1{
+    color: rgb(124, 22, 22) ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.com-1-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.com-1{
+    padding: 25px;
+    background-color: rgba(218, 218, 218, 0.322);
+}
+
+a.col-md-6.col-lg-4.mb-3{
+    text-decoration: none;
+}

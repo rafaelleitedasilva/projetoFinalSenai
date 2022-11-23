@@ -1,65 +1,58 @@
 {% extends 'principal.html'%}
 {%block conteudo %}
 <!-- Content -->
-  <div class="filtro">
-    <div class="dropdown">
-      <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filtroCurso">
-        Cursos
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" onclick="cursosDP('Des. DE Sistemas')">Des. de Sistemas</a></li>
-        <li><a class="dropdown-item" onclick="cursosDP('Elétrica')">Elétrica</a></li>
-        <li><a class="dropdown-item" onclick="cursosDP('Ferramentaria')">Ferramentaria</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="comunicado">
+  <h1>COMUNICADOS</h1>
+  
+    <div class="com-1">
+      <div class="com-1-flex">
+        <h3>Comunicado sobre feriadão Dia da Criança e do Professor</h3>
+        <h5>09/10/22</h5>
+      </div>
+      <p>O feriado em comemoração ao Dia do Professor foi antecipado do dia 15 de outubro para 13 de outubro (terça-feira). Portanto, segunda-feira (12/10) e terça-feira (13 /10) não haverá aula. Retornaremos às atividades normais na quarta-feira, dia 14/10.
+        Ótimo feriadão a todos! Bom descanso!</p>
+      </div>
+    
+      <div class="com-1">
+        <div class="com-1-flex">
+          <h3>Jornada de Transformação Digital</h3>
+          <h5>09/10/22</h5>
+        </div>
+        <p>FIESP, CIESP, SENAI-SP e SEBRAE-SP unem forças para fazer o maior programa de transformação digital da história de São Paulo. Com capacidade para atender 40 mil micro, pequenas e médias indústrias, a Jornada de Transformação Digital vai atender empresas de todos os segmentos industriais, com diferentes níveis de maturidade tecnológica, em oito etapas de consultoria e treinamento.</p>
+      </div>
+    
+      <div class="com-1">
+        <div class="com-1-flex">
+          <h3>Comunicado Importante!</h3>
+          <h5>09/10/20</h5>
+        </div>
+        <p>Gostaríamos de agradecer a compreensão de todos neste atual cenário de Pandemia causada pela COVID-19. O SENAI-SP suspendeu temporariamente as atividades em prol da saúde e segurança de todos nós. Esperamos que essa ação tenha surtido efeito e que todos estejam bem. Agora, é tempo de nos unirmos, mesmo que a distância.
+          O SENAI-SP vem investindo em tecnologias educacionais nos últimos anos e, no início deste semestre, os nossos professores intensificaram o uso de algumas ferramentas online, como questionários e simuladores, nas aulas presenciais e em algumas tarefas para os alunos.</p>
+        </div>
+</div>
+    
+    <div class="row mb-5">
 
-<h1>3º Termo</h1>
-  <div class="row mb-5">
-    <div class="col-md-6 col-lg-4 mb-3">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="flex-row">
-            <div class="flex-column">
-              <p class="abv-mat">IDM</p>
+      <a class="col-md-6 col-lg-4 mb-3" href="/tarefaAcervo">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="flex-row">
+                <div class="flex-column">
+                  <p class="abv-mat">IDM</p>
+                </div>
+                <div class="flex-column">
+                  <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                  <h6 class="card-subtitle text-muted">3° Termo</h6>
+                </div>
+              </div>
             </div>
-            <div class="flex-column">
-              <h5 class="card-title">Interface para Dispositivos Móveis</h5>
-              <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
-          <a href="{{ url_for('posts') }}" class="card-link">Posts</a>
-          <a href="{{ url_for('tarefas') }}" class="card-link">Tarefas</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4 mb-3">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="flex-row">
-            <div class="flex-column">
-              <p class="abv-mat">IDM</p>
-            </div>
-            <div class="flex-column">
-              <h5 class="card-title">Interface para Dispositivos Móveis</h5>
-              <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+            <div class="card-body">
+              <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+        
             </div>
           </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
-          <a href="{{ url_for('posts') }}" class="card-link">Posts</a>
-          <a href="{{ url_for('tarefas') }}" class="card-link">Tarefas</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <h1>2º Termo</h1>
-    <div class="row mb-5">
+      </a>
+
       <div class="col-md-6 col-lg-4 mb-3">
         <div class="card h-100">
           <div class="card-body">
@@ -69,21 +62,16 @@
               </div>
               <div class="flex-column">
                 <h5 class="card-title">Interface para Dispositivos Móveis</h5>
-                <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+                <h6 class="card-subtitle text-muted">3° Termo</h6>
               </div>
             </div>
           </div>
           <div class="card-body">
             <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
-            <a href="javascript:void(0);" class="card-link">Posts</a>
-            <a href="javascript:void(0);" class="card-link">Tarefas</a>
+            
           </div>
         </div>
       </div>
-    </div>
-    <hr>
-  <h1>1º Termo</h1>
-    <div class="row mb-5">
       <div class="col-md-6 col-lg-4 mb-3">
         <div class="card h-100">
           <div class="card-body">
@@ -93,16 +81,129 @@
               </div>
               <div class="flex-column">
                 <h5 class="card-title">Interface para Dispositivos Móveis</h5>
-                <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+                <h6 class="card-subtitle text-muted">2° Termo</h6>
               </div>
             </div>
           </div>
           <div class="card-body">
             <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
-            <a href="javascript:void(0);" class="card-link">Posts</a>
-            <a href="javascript:void(0);" class="card-link">Tarefas</a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">2° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">2° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">2° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">1° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">1° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">1° Termo</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            
           </div>
         </div>
       </div>
     </div>
-  {%endblock %}
+    {%endblock %}

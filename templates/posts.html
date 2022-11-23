@@ -1,6 +1,21 @@
 {% extends 'principal.html'%}
 {%block conteudo %}
 <!-- Content -->
+<div class="filtro">
+    <input class="btn" style="width: 60px;" type="date" name="data-filtro" id="data-filtro">
+    <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filtroCurso">
+          Matérias
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item">Todas as Matérias</a></li>
+          <li><a class="dropdown-item">IDM</a></li>
+          <li><a class="dropdown-item">BD</a></li>
+          <li><a class="dropdown-item">PWFE</a></li>
+          <li><a class="dropdown-item">PWBE</a></li>
+        </ul>
+      </div>
+</div>
 <div class="col-md-14 mb-3 posts">
     <div class="card h-100">
         <div class="card-body">
@@ -16,28 +31,37 @@
         <div class="card-body">
             <p class="card-text text-justify">Oi pessoal, segue o slide utilizado em SGBD! Façam os exercícios propostos em sala de aula</p>
             <iframe class="scribd_iframe_embed" title="110228_-_aula-1_introdução_ao_sgbd" src="https://www.scribd.com/embeds/65403213/content?start_page=1&view_mode=scroll&access_key=key-2l63qp5lgd5kwyu0bwea" tabindex="0" data-auto-height="true" data-aspect-ratio="null" scrolling="no" width="100%" height="600"></iframe>
-            <div class="coments-group">
-                <div class="d-flex w-100 wrap">
-                    <div class="ml-2 mt-2">
-                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
-                        <p class="ml-2"> Professor, não entendi o que é uma instância de dados no slide 7!</p>
-                    </div>
-                    <div class="ml-2">
-                        <h6><span class="fw-semibold d-block">Ailton:</span></h6>
-                        <p class="ml-2"> Entre as principais funções da SGBD, estão: a lteração de estruturas de campos; edição de tabelas, eliminar e copiar dados; criar usuários e ter o controle de acessos; importação e exportação de bases de dados; e; criação de chaves primárias e externas. Ferramentas do SGBD. Existem inúmeros tipos de SGBD no mercado!</p>
-                    </div>
-                    <div class="ml-2">
-                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
-                        <p class="ml-2"> Ah entendi professor, obrigado!</p>
-                    </div>
-                </div>
-            </div>
-            <form action="" class="mt-2">
-                <input placeholder="Escreva o seu comentário..." type="text" class="form-control" id="usr">
-            </form>
         </div>
     </div>
 </div>
-<label class="postArquivo"><input type="file">Escolha o arquivo</label>
-
+<form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </form>
 {%endblock %}

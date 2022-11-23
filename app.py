@@ -80,9 +80,9 @@ def perfilProfessor():
 def posts():
     return render_template('posts.html')
 
-@app.route('/tarefas')
+@app.route('/tarefaAcervo')
 def tarefas():
-    return render_template('tarefas.html')
+    return render_template('tarefaAcervo.html')
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login_screen():

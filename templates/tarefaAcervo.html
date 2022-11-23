@@ -1,19 +1,13 @@
 {% extends 'principal.html'%}
 {%block conteudo %}
 <!-- Content -->
-<div class="filtro">
-    <input class="btn" style="width: 60px;" type="date" name="data-filtro" id="data-filtro">
-    <div class="dropdown">
-        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filtroCurso">
-          Matérias
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item">IDM</a></li>
-          <li><a class="dropdown-item">BD</a></li>
-          <li><a class="dropdown-item">PWFE</a></li>
-          <li><a class="dropdown-item">PWBE</a></li>
-        </ul>
-      </div>
+<div class="menu-top">
+    <button class="activate">
+        Tarefas
+    </button>
+    <button class="desactivate">
+        Acervo
+    </button>
 </div>
 <div class="flex-row">
     <div class="flex-column">
