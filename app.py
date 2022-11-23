@@ -21,12 +21,8 @@ cad = []
 # -- routes
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('home.html')
           
-# @app.route('/cadastro')
-# def cadastro():
-#     return render_template('cadastro.html')
-    
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
     return render_template('cadastroAluno.html')
@@ -107,8 +103,7 @@ def login_screen():
                 msg = 'login nao confere'
                 return render_template('login.html', data=msg)
         except Exception as e:
-                msg = 'erro ' 
-                
+                msg = 'erro '                
                 return render_template('login.html', data=msg, erro = e)
                 
     return render_template('login.html')
@@ -139,30 +134,28 @@ def insertAluno():
             print('deu erro')
             return render_template('cadastroAluno.html')
 
-@app.route('/insertprof', methods=['GET', 'POST'])
+@app.route('/insertprof', methods=['POST'])
 def insertProfessor():
     if request.method == 'POST': 
-        try: 
+        try:
             nome = request.form['nome']
             cpf = request.form['cpf']
             rg = request.form['rg']
             dt_nasc = request.form['nascimento']
             sexo = request.form['sexo']
             end = request.form['endereco']
+            formacao = request.form['formacao']
+            disciplina = request.form['disc']
             tel = request.form['telefone']
             email = request.form['email']
             senha = request.form['senha']
-            formacao = request.form['formacao']
-            disc = request.form['disc']
-            b = 'b'
-            c = 'c'
-            cursor = mysql.connection.cursor()
-            cursor.execute( # , Data_Nascimento, CPF, RG, Endereco, Sexo, Telefone, Email, Senha, Nome_Disciplina
-                "INSERT INTO eductech.cadastro_professor (Nome, Formacao) VALUES (%s,%s)",(b, c) # ,%s,%s,%s,%s,%s,%s,%s,%s,%s
-                ) # , dt_nasc, cpf, rg, end, sexo, tel, email, senha, disc
-            mysql.connection.commit()
-            cursor.close()
 
+            cursor = mysql.connection.cursor()
+            cursor.execute(
+                "INSERT INTO eductech.cadastro_professor (Nome, Formacao, Data_Nascimento,CPF, RG, Endereco, Sexo, Telefone, Email, Senha, Nome_Disciplina) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                (nome,formacao, dt_nasc,cpf, rg, end, sexo,tel, email, senha, disciplina)
+            )
+            mysql.connection.commit()
             return render_template('login.html')
             
         except Exception as e:
