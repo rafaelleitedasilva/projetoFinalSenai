@@ -1,7 +1,7 @@
 
 {% extends 'principal.html'%}
 {%block conteudo %}
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
 <div class="container" style="margin-top: 1%">
 <div class="row clearfix">
@@ -114,5 +114,52 @@
         </div>
     </div>
 </div>
+</div> -->
+<style>
+.chat{
+    display:flex;
+    flex-direction:  column;
+}
+
+.chat span{
+    margin-bottom: 10px;
+}
+
+form{
+    margin-top: 10px;
+}
+</style>
+<div class="chat"></div>
+<div>
+    <form action = "{{url_for('chat')}}"  method="POST">
+        <input type="text" placeholder="Nome" name="teste_nome">
+        <input type="text" placeholder="Mensagem">
+        <button type="submit">Enviar</button>
+    </form>
 </div>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+<script>
+    window.onload = function(){
+        const socket = io('http://127.0.0.1:5000');
+
+        socket.on('connect', () => {
+            socket.send('Usuario conectado ao socket!')
+        });
+
+        const form = document.querySelector('form').addEventListener('submit', function(event){
+            event.preventDefault();
+
+            socket.emit('sendMessage', {name: event.target[0].value, message: event.target[1].value})
+            event.target[0].value = "";
+            event.target[1].value = "";
+        });
+
+        socket.on('getMessage', (msg) =>{
+            const span = document.createElement("span");
+            const chat = document.querySelector(".chat")
+            span.innerHTML = `<strong>${msg.name}:</strong> ${msg.message}`
+            chat.append(span);
+        });
+    }
+</script>
 {%endblock %}

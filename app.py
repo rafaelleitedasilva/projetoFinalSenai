@@ -1,12 +1,15 @@
 import functools
 from flask import Flask,render_template, request
 from flask_mysqldb import MySQL
+from flask_socketio import SocketIO, emit
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 app = Flask(__name__)
+io = SocketIO(app)
+
 #- criando a conexao com o banco
 mysql = MySQL(app)
 app.config['MYSQL_HOST'] = 'localhost'
@@ -162,5 +165,9 @@ def insertProfessor():
             print(f'deu erro {e}')
             return render_template('cadastroProfessor.html')
 
+@io.on('sendMessage')
+def send_message_handler(msg):
+    emit('getMessage', msg, broadcast=True)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    io.run(app, debug=True)
