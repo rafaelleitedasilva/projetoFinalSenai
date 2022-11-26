@@ -1,32 +1,60 @@
 import functools
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, flash
 from flask_mysqldb import MySQL
 from flask_socketio import SocketIO, emit
+from werkzeug.utils import secure_filename
+import os
+import urllib.request
+
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 app = Flask(__name__)
+
+app.secret_key = "emanuel-gatao"
+
 io = SocketIO(app)
 
 #- criando a conexao com o banco
 mysql = MySQL(app)
-app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
-app.config['MYSQL_USER'] = 'bee0845ec95fd8'
+# app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+# app.config['MYSQL_USER'] = 'bee0845ec95fd8'
 # app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
-app.config['MYSQL_PASSWORD'] = '1f0584b3'
+# app.config['MYSQL_PASSWORD'] = '1f0584b3'
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
 
 app.config['MYSQL_DB'] = 'eductech'
-# lists data
+# lists data        
 dados_aluno = []
 dados_prof = []
 cad = []
+
+
+# - 
+
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+  
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'pdf'])
+  
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 # -- routes
 @app.route('/')
+def login():
+    return render_template('login.html')
+
+@app.route('/home')  
 def home():
     return render_template('home.html')
-          
+
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
     return render_template('cadastroAluno.html')
@@ -78,9 +106,45 @@ def perfilAluno():
 def perfilProfessor():
     return render_template('perfilProfessor.html')   
 
-@app.route('/posts')
-def posts():
-    return render_template('posts.html')
+@app.route('/acervo-de-materiais-didaticos')
+def acervo():
+    divs = get_data()
+    
+    return render_template('acervo.html', divs = divs)
+
+def get_data():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * from acervo')
+    rows = cursor.fetchall()    
+    return rows
+
+@app.route('/inserir-material')
+def insert_screen():
+    return render_template('send_files.html')
+
+@app.route('/upload_acervo', methods = ['POST', 'GET'])
+def upload_acervo():
+    
+    cur = mysql.connection.cursor()
+    if request.method == 'POST':
+
+        desc = request.form['descricao-material']
+        disc =  request.form['disciplina']
+
+        professor =  dados_prof[0][1] 
+        # print(professor)
+
+        files = request.files.getlist('files[]')
+        for file in files:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+                cur.execute("INSERT INTO acervo (file_name, descricao, disciplina, professor) VALUES (%s, %s, %s, %s)",[filename, desc, disc, professor ])
+                mysql.connection.commit()
+            print(file)
+        cur.close()   
+    return redirect('/acervo-de-materiais-didaticos')
 
 @app.route('/tarefas')
 def tarefas():
@@ -97,6 +161,7 @@ def login_screen():
             cursor.execute("SELECT * from eductech.cadastro_professor WHERE email = '{}' AND senha = '{}'".format(email, senha))
             dados = cursor.fetchone()
             dados_prof.append(dados)
+            print(dados_prof)
             try: 
                 if dados[9]== email and dados[10] == senha:
                     print('login de professor')  

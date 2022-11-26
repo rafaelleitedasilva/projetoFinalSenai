@@ -29,8 +29,9 @@ CREATE TABLE `eductech`.`cadastro_aluno` (
   `email` VARCHAR(150) NOT NULL,
   `senha` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`RA`));
+
 CREATE TABLE `eductech`.`cadastro_professor` (
-  `NIF` VARCHAR(9) NOT NULL,
+  `NIF` int(9)  NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(70) NULL,
   `Formacao` VARCHAR(200) NULL,
   `Data_Nascimento` DATE NULL,
@@ -42,11 +43,8 @@ CREATE TABLE `eductech`.`cadastro_professor` (
   `Email` VARCHAR(100) NULL,
   `Senha` VARCHAR(100) NULL,
   /*FK*/ 
-  `ID_Calendario` INT,
-  `Sigla` VARCHAR(10) NOT NULL,
   `Nome_Disciplina`	VARCHAR(50),
   PRIMARY KEY (`NIF`));
-
 CREATE TABLE `eductech`.`calendario` (
   `ID_Calendario` INT,
   `Data_Emissao` DATE NOT NULL,
