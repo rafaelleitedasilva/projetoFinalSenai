@@ -32,8 +32,7 @@ app.config['MYSQL_DB'] = 'eductech'
 # lists data        
 dados_aluno = []
 dados_prof = []
-cad = []
-
+usr = []
 
 # - 
 
@@ -53,7 +52,11 @@ def login():
 
 @app.route('/home')  
 def home():
-    return render_template('home.html')
+    usuario = get_user()
+    print(dados_prof)
+    print('---------- ')
+    print(dados_aluno)
+    return render_template('home.html', usuario = usuario)
 
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
@@ -75,7 +78,7 @@ def chat():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/perfilAluno', methods = ['POST'])
+@app.route('/perfilAluno', methods = ['POST', 'GET'])
 def perfilAluno():
     print(dados_aluno)
     ra_ = dados_aluno[0][0]
@@ -93,10 +96,12 @@ def perfilAluno():
             nm_pai =  request.form['nome_pai']
             nm_mae =  request.form['nome_mae']
             cursor= mysql.connection.cursor()
-            sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, email=%s, senha=%s, Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s where RA = %s""" 
-            data_qr = (nome, rg, cpf, dt_nasc, sexo, email, senha, nm_pai, nm_mae, end, tel, ra_)
+            
+            sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s,Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s, email=%s, senha=%s where RA = %s""" 
+            data_qr = (nome, rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha, ra_)
             cursor.execute(sql_update_qr, data_qr)
-            cursor.commit()
+
+            mysql.connection.commit()
             cursor.close()
         except Exception as e :
             print('erro: ', e) 
@@ -104,19 +109,55 @@ def perfilAluno():
 
 @app.route('/perfilProfessor')
 def perfilProfessor():
-    return render_template('perfilProfessor.html')   
+    print(dados_prof)
+    nif = dados_prof[0][0]
+    if request.method == 'POST': 
+        try: 
+            nome = request.form['nome']
+            cpf = request.form['cpf']
+            rg = request.form['rg']
+            dt_nasc = request.form['nascimento']
+            sexo = request.form['sexo']
+            end = request.form['endereco']
+            tel = request.form['telefone']
+            email = request.form['email']
+            senha = request.form['senha']
+            formacao =  request.form['formacao']
+            disc =  request.form['disc']
+            cursor= mysql.connection.cursor()
+            
+            sql_update_qr =  """Update eductech.cadastro_professor set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, Endereco=%s, Telefone=%s, email=%s, senha=%s, Nome_Disciplina, Formacao where nif = %s""" 
+            data_qr = (nome, rg, cpf, dt_nasc, sexo, end, tel, email, senha,disc, formacao, nif)
+            cursor.execute(sql_update_qr, data_qr)
+
+            mysql.connection.commit()
+            cursor.close()
+        except Exception as e :
+            print('erro: ', e) 
+    return render_template('perfilProfessor.html', nif = dados_prof[0][0],nome_bd = dados_prof[0][1], cpf_bd = dados_prof[0][4], rg_bd = dados_prof[0][5], data_nas_bd = dados_prof[0][3],sexo_bd = [0][7], end_bd = dados_prof[0][6], tel_bd = dados_prof[0][8], form_bd = dados_prof[0][2], disc_bd = dados_prof[0][2],  email_bd = dados_prof[0][9], senha_bd = dados_prof[0][10] )
+#  arrumar os indices
 
 @app.route('/acervo-de-materiais-didaticos')
 def acervo():
+    print(usr, ' asjasijas ias jasi jasijias jas jias ijasisa')
     divs = get_data()
-    
-    return render_template('acervo.html', divs = divs)
+    usuario = get_user()
+    print(usuario, 'usuario tela acervo     ')
+    return render_template('acervo.html', divs = divs, usuario = usuario)
 
 def get_data():
     cursor = mysql.connection.cursor()
     cursor.execute('SELECT * from acervo')
     rows = cursor.fetchall()    
     return rows
+
+def get_user():         
+    if usr[0] == 'professor':
+        usur = 'professor'
+        return usur
+    elif usr[0] == 'aluno':
+        usur = 'aluno'  
+        return usur
 
 @app.route('/inserir-material')
 def insert_screen():
@@ -161,6 +202,7 @@ def login_screen():
             cursor.execute("SELECT * from eductech.cadastro_professor WHERE email = '{}' AND senha = '{}'".format(email, senha))
             dados = cursor.fetchone()
             dados_prof.append(dados)
+            usr.append('professor')
             print(dados_prof)
             try: 
                 if dados[9]== email and dados[10] == senha:
@@ -177,6 +219,7 @@ def login_screen():
             cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
             dados = cursor.fetchone()
             dados_aluno.append(dados)
+            usr.append('aluno')
             try: 
                 if dados[10]== email and dados[11] == senha:
                     print('login de aluno')  
