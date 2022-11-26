@@ -1,15 +1,78 @@
 {% extends 'principal.html'%}
 {%block conteudo %}
+<style>
+    #carrossel {
+        position: absolute;
+        margin-top: 10px;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    #container {
+        position: absolute;
+        width: auto;
+        padding: 0px 30px;
+        height: 100%;
+        display: inline-flex;
+        transition: 0.6s ease-in-out;
+    }
+    
+    #container> #item {
+        position: relative;
+        margin: 0 7px;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+    }
+    
+    #container #item img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #btnleft {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 100%;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    #btnright {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    #container #limitador {
+        position: absolute;
+        margin: 0 7px;
+        width: 150px;
+        height: 100%;
+        opacity: 0;
+        right: 0;
+        z-index: 1;
+    }
+</style>
 <!-- Content -->
 <div class="menu-top">
-    <button class="activate">
+    <button onclick="Tarefas()" class="activate" id="Tarefa">
         Tarefas
     </button>
-    <button class="desactivate">
+    <button onclick="Acervo()" class="desactivate" id="Acervo">
         Acervo
     </button>
 </div>
-<div class="flex-row">
+<div class="flex-row" id="tarefa">
     <div class="flex-column">
         <div class="card h-100 w-100">
             <div class="card-body">
@@ -92,4 +155,221 @@
         </div>
     </div>
 </div>
+
+<div class="None" id="acervo">
+    <div class="flex-column w-100">
+        <div class="card h-100 carrossel-container-card">
+            <h1 class="m-3">Acervo</h1>
+            <div class="row mb-5">
+                
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <h5 class="card-title">Slide aula de Banco de Dados</h5>
+                                    <h6 class="card-subtitle text-muted">23.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <h5 class="card-title">PDF sobre T-SQL</h5>
+                                    <h6 class="card-subtitle text-muted">7.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <h5 class="card-title">Slide sobre SGBD</h5>
+                                    <h6 class="card-subtitle text-muted">43.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <H4 style="margin-left:20px ;">Apostilas do Curso:</H4>
+            <div class="carrossel-div">
+                <div id='carrossel'>
+                    <button type='button' id='btnleft'><</button>
+                    <div id='container'>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='limitador'>Limitador</div>
+                    </div>
+                    <button type='button' id='btnright'>></button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    //variaveis de contagem da direção
+    
+    var num = 150;
+    var num2 = 150;
+    
+    //slide do botão direito
+    
+    var btnRight = document.getElementById('btnright');
+    
+    btnRight.addEventListener('click', () => {
+        
+        var limi = document.getElementById('limitador').getBoundingClientRect().left;
+        
+        var limit = Math.round(limi);
+        
+        var er = document.getElementById('btnright').getBoundingClientRect().left;
+        
+        var ref = Math.round(er);
+        
+        var slideContainer = document.getElementById('container');
+        
+        var carrossel = document.getElementById('carrossel');
+        
+        
+        if (limit > ref) {
+            
+            slideContainer.style.transform = 'translateX(-' + num + 'px)';
+            
+            num = num + 150;
+            
+            num2 = num2 - 150;
+            
+        } else {
+            
+            var stoped = ref * slideContainer.clientWidth / carrossel.clientWidth - carrossel.clientWidth + 100;
+            
+            var stopedRound = Mtah.round(stoped);
+            
+            slideContainer.style.transform = 'translateX(-' + stopedRound + 'px)';
+            
+            
+        }
+        
+        
+    });
+    
+    
+    //slide botão esquerdo
+    
+    var btnLeft = document.getElementById('btnleft');
+    
+    btnLeft.addEventListener('click', () => {
+        
+        
+        var limi = document.getElementById('limitador').getBoundingClientRect().left;
+        
+        var limit = Math.round(limi);
+        
+        var er = document.getElementById('btnleft').getBoundingClientRect().left;
+        
+        var ref = Math.round(er);
+        
+        var slideContainer = document.getElementById('container');
+        
+        var carrossel = document.getElementById('carrsossel');
+        
+        var slide = slideContainer.getBoundingClientRect().left;
+        
+        if (slide < ref) {
+            
+            slideContainer.style.transform = 'translateX(' + num2 + 'px)';
+            
+            num = num - 150;
+            num2 = num2 + 150;
+            
+        } else {
+            
+            slideContainer.style.transform = 'translateX(0)';
+            
+            num = 150;
+            
+        }
+        
+        
+    });
+</script>
+
+
+<script>
+    function Acervo(){
+        let botaoAcervo = document.getElementById('Acervo');
+        let botaoTarefa = document.getElementById('Tarefa');
+        
+        let Acervo = document.getElementById('acervo')
+        let Tarefa = document.getElementById('tarefa')
+        
+        botaoAcervo.className = 'activate';
+        botaoTarefa.className = 'desactivate';
+        
+        Acervo.className="flex-row"
+        Tarefa.className="None"
+    }
+    
+    function Tarefas(){
+        let botaoAcervo = document.getElementById('Acervo');
+        let botaoTarefa = document.getElementById('Tarefa');
+        
+        let Acervo = document.getElementById('acervo')
+        let Tarefa = document.getElementById('tarefa')
+        
+        botaoAcervo.className = 'desactivate';
+        botaoTarefa.className = 'activate';
+        
+        Acervo.className="none"
+        Tarefa.className="flex-row"
+    }
+</script>
 {%endblock %}

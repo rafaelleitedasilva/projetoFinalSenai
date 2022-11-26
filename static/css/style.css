@@ -11,6 +11,24 @@
     
 }
 
+/* .card.h-100:hover{
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.301);
+    border-radius: 10px;
+} */
+
+.carrossel-container-card>h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.justify-content-space-between{
+    display: flex !important;
+    width: 100% !important;
+    align-items: center;
+    justify-content: space-between !important;
+}
+
 .coments-group{
     height: fit-content;
 }
@@ -34,6 +52,38 @@
     margin: 10px 0px !important;
 }
 
+.menu-top{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    margin: 10px 0px 0px 0px;
+}
+
+.None{
+    display: none;
+}
+
+.carrossel-div{
+    position: relative;
+    height: 230px;
+    width: 95%;
+    margin: auto;
+
+}
+
+.menu-top>button{
+    font-size: 15px;
+    margin: 0px 3px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 0px 0px 10px 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.501);
+    background-color: rgba(255, 95, 95, 0.404);
+}
+
+.menu-top>button.desactivate{
+    background-color: rgba(146, 146, 146, 0.404);
+}
 
 ::-webkit-scrollbar-thumb{
     background-image: linear-gradient(to top, rgb(255, 175, 175), rgb(255, 239, 239));
