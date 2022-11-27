@@ -1,0 +1,88 @@
+{% extends 'principal.html'%}
+{% block conteudo %}
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url_for('static', filename='css/calendario.css')}}">
+<script
+    nonce="8009958f-0dce-479e-85a9-af4b6ee6017e">(function (w, d) { !function (Z, _, ba, bb) { Z.zarazData = Z.zarazData || {}; Z.zarazData.executed = []; Z.zaraz = { deferred: [], listeners: [] }; Z.zaraz.q = []; Z.zaraz._f = function (bc) { return function () { var bd = Array.prototype.slice.call(arguments); Z.zaraz.q.push({ m: bc, a: bd }) } }; for (const be of ["track", "set", "debug"]) Z.zaraz[be] = Z.zaraz._f(be); Z.zaraz.init = () => { var bf = _.getElementsByTagName(bb)[0], bg = _.createElement(bb), bh = _.getElementsByTagName("title")[0]; bh && (Z.zarazData.t = _.getElementsByTagName("title")[0].text); Z.zarazData.x = Math.random(); Z.zarazData.w = Z.screen.width; Z.zarazData.h = Z.screen.height; Z.zarazData.j = Z.innerHeight; Z.zarazData.e = Z.innerWidth; Z.zarazData.l = Z.location.href; Z.zarazData.r = _.referrer; Z.zarazData.k = Z.screen.colorDepth; Z.zarazData.n = _.characterSet; Z.zarazData.o = (new Date).getTimezoneOffset(); Z.zarazData.q = []; for (; Z.zaraz.q.length;) { const bl = Z.zaraz.q.shift(); Z.zarazData.q.push(bl) } bg.defer = !0; for (const bm of [localStorage, sessionStorage]) Object.keys(bm || {}).filter((bo => bo.startsWith("_zaraz_"))).forEach((bn => { try { Z.zarazData["z_" + bn.slice(7)] = JSON.parse(bm.getItem(bn)) } catch { Z.zarazData["z_" + bn.slice(7)] = bm.getItem(bn) } })); bg.referrerPolicy = "origin"; bg.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(Z.zarazData))); bf.parentNode.insertBefore(bg, bf) };["complete", "interactive"].includes(_.readyState) ? zaraz.init() : Z.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, 0, "script"); })(window, document);</script>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content w-100">
+                        <div class="calendar-container w-100">
+                            <div class="calendar w-50 m-auto">
+                                <div class="year-header">
+                                    <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                                    <span class="year" id="label"></span>
+                                    <span class="right-button fa fa-chevron-right" id="next"> </span>
+                                </div>
+                                <table class="months-table w-100">
+                                    <tbody>
+                                        <tr class="months-row">
+                                            <td class="month">Jan</td>
+                                            <td class="month">Fev</td>
+                                            <td class="month">Mar</td>
+                                            <td class="month">Abr</td>
+                                            <td class="month">Mai</td>
+                                            <td class="month">Jun</td>
+                                            <td class="month">Jul</td>
+                                            <td class="month">Ago</td>
+                                            <td class="month">Set</td>
+                                            <td class="month">Out</td>
+                                            <td class="month">Nov</td>
+                                            <td class="month">Dez</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="days-table w-100">
+                                    <td class="day">Seg</td>
+                                    <td class="day">Ter</td>
+                                    <td class="day">Qua</td>
+                                    <td class="day">Qui</td>
+                                    <td class="day">Sex</td>
+                                    <td class="day">Sáb</td>
+                                    <td class="day">Dom</td>
+                                </table>
+                                <div class="frame">
+                                    <table class="dates-table w-100">
+                                        <tbody class="tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button class="button" id="add-button">Adicionar nota</button>
+                            </div>
+                        </div>
+                        <div class="events-container">
+                        </div>
+                        <div class="dialog" id="dialog">
+                            <h2 class="dialog-header"> Adicionar nota</h2>
+                            <form class="form" id="form">
+                                <div class="form-container" align="center">
+                                    <label class="form-label" id="valueFromMyButton" for="name">Título</label>
+                                    <input class="input" type="text" id="name" maxlength="36">
+                                    <label class="form-label" id="valueFromMyButton" for="count">Descrição</label>
+                                    <input class="input" type="text" id="count" maxlength="500">
+                                    <input type="button" value="Cancelar" class="button" id="cancel-button">
+                                    <input type="button" value="OK" class="button button-white" id="ok-button">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../static/scripts/js/jquery.min.js"></script>
+    <script src="../static/scripts/js/bootstrap.min.js"></script>
+    <script src="../static/scripts/js/popper.js"></script>
+    <script src="../static/scripts/js/calendario.js"></script>
+    <script defer
+    src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
+    integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
+    data-cf-beacon='{"rayId":"7645aa092d04012c","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.0","si":100}'
+    crossorigin="anonymous">
+    </script>
+
+{% endblock %}

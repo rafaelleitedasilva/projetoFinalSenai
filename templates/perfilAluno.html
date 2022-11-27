@@ -1,0 +1,81 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<div class="flex-cadastro formPerfil">
+  <div class="cadastro ajustePerfil">
+    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">Perfil</h1>
+    <img class="perfil" src="../static/vendor/img/perfil.jpg">
+    
+    <form action ="{{url_for('perfilAluno')}}" method = "post">
+
+      <div class="mb-3">
+        <label for="inome" class="form-label posts">Registro do Aluno</label>
+        <p class="form-control" name="ra" id="ra"  >{{ra_bd}}</p>
+      </div>
+        
+      <div class="mb-3">
+        <label for="inome" class="form-label posts">Nome Completo</label>
+        <input type="text" class="form-control" name="nome" id="nome" value= "{{nome_bd}}" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="icpf" class="form-label">CPF</label>
+        <input type="number" class="form-control" name="cpf" id="icpf" value= "{{cpf_bd}}"  required>
+      </div>
+
+      <div class="mb-3">
+        <label for="ira" class="form-label">RG</label>
+        <input type="number" class="form-control" name="rg" id="irg" value= "{{rg_bd}}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="inascimento" class="form-label">DATA DE NASCIMENTO</label>
+        <input type="date" class="form-control" name="nascimento" id="inascimento" maxlength="11" value= "{{data_nas_bd}}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="isexo" class="form-label">SEXO</label>
+        <select class="form-select" name="sexo" id="isexo" aria-label="Default select example">
+          <option selected >{{sexo_bd}}</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="iendereco" class="form-label">Nome do pai</label>
+        <input type="text" class="form-control" name="nome_pai" id="iendereco" value= "{{np_bd}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="iendereco" class="form-label">Nome da mãe</label>
+        <input type="text" class="form-control" name="nome_mae"  id="iendereco"  value= "{{nm_bd}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="iendereco" class="form-label">ENDEREÇO</label>
+        <input type="text" class="form-control" name="endereco" id="iendereco" value= "{{end_bd}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="itelefone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" name="telefone" id="itelefone" aria-describedby="emailHelp" value= "{{tel_bd}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="iemail" class="form-label">Endereço de Email</label>
+        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" value= "{{email_bd}}" required>
+      </div>
+    
+      <div class="mb-3">
+        <label for="isenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" name="senha" id="senha" value= "{{senha_bd}}" required>
+      </div>
+      
+      <div class="btn-flex-between">
+        <input type="submit" class="btn btn-danger" value="Alterar">
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock %}

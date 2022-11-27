@@ -1,0 +1,59 @@
+{% include 'head.html' %}
+
+  <div class="mb-3">
+   
+  
+    <p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+       {% for message in messages %}
+         <div class="alert alert-success">
+          <strong>{{ message }}</strong>
+        </div>
+       {% endfor %}
+        {% endif %}
+      {% endwith %}
+     </p>
+
+    <form method="post" action="/upload_acervo" enctype="multipart/form-data" class="form-inline">
+      <label for="isexo" class="form-label">Disciplina</label>
+
+      <div class="mb-3">
+        
+        <input type="text" placeholder="Escreva alguma descrição para o material..." class="form-control" name="descricao-material" id="nome" value= "{{nome_bd}}" required>
+      </div>
+  
+      <select class="form-select" name="disciplina" id="isexo" aria-label="Default select example">
+        <option selected></option>
+        <option value="BD">Banco de Dados</option>
+        <option value="PWFE">Programação Front-End</option>
+        <option value="PWBE">Programação Back-End</option>
+      </select>
+  
+
+      <div class="form-group">
+                        <label>Enviar material: </label>
+                        <input type="file" name="files[]" id="fileInput" class="form-control" multiple >
+                   </div>
+                   <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
+    </form>
+  </div>
+  <script>
+    $(document).ready(function(){
+     // File type validation
+        $("#fileInput").change(function(){
+            var fileLength = this.files.length;
+            var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+            var i;
+            for(i = 0; i < fileLength; i++){ 
+                var file = this.files[i];
+                var imagefile = file.type;
+                if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
+                    alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                    $("#fileInput").val('');
+                    return false;
+                }
+            }
+        });
+    });
+    </script>

@@ -1,0 +1,79 @@
+{% include 'head.html' %}
+<div class="flex-cadastro">
+  <div class="cadastro">
+    <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">CADASTRO DO PROFESSOR</h1>
+    
+    <form action = "{{url_for('insertProfessor')}}" method = "post">
+      <div class="mb-3">
+        <label for="inome" class="form-label">Nome Completo</label>
+        <input type="text" class="form-control" name="nome" id="inome" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="icpf" class="form-label">CPF</label>
+        <input type="number" class="form-control" name="cpf" id="icpf" maxlength="11" required>
+      </div>
+
+      
+      <div class="mb-3">
+        <label for="irg" class="form-label">RG</label>
+        <input type="number" class="form-control" name="rg" id="irg" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="inascimento" class="form-label">DATA DE NASCIMENTO</label>
+        <input type="date" class="form-control" name="nascimento" id="inascimento" maxlength="11" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="isexo" class="form-label">SEXO</label>
+        <select class="form-select" name="sexo" id="isexo" aria-label="Default select example">
+          <option selected></option>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+          <option value="O">Outro</option>
+        </select>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="iendereco" class="form-label">Telefone</label>
+        <input type="text" class="form-control" name="telefone" id="iendereco" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="iendereco" class="form-label">ENDEREÇO</label>
+        <input type="text" class="form-control" name="endereco" id="iendereco" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="iescola" class="form-label">Formação</label>
+        <input type="text" class="form-control" name="formacao" id="iescola" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="iescola" class="form-label">Disciplina ministrada</label>
+        <input type="text" class="form-control" name="disc" id="iescola" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="iemail" class="form-label">Endereço de Email</label>
+        <input type="email" class="form-control" name="email" id="iemail" aria-describedby="emailHelp" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="isenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" name="senha" id="senha" required>
+      </div>
+      
+      <div class="btn-flex-between">
+        <a href="/login" class="btn btn-danger">Voltar ao Login</a>
+        <input type="submit" class="btn btn-danger" value="Cadastrar">
+      </div>
+  
+    </form>
+    
+  </div>
+</div>
+{{data}}
+{% include 'footer.html' %}

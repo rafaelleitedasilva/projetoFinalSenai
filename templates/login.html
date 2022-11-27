@@ -1,0 +1,42 @@
+{% include 'head.html' %}
+<div class="flex-login">
+    <div class="login">
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">LOGIN</h1>
+
+        <form action = "{{ url_for('login_screen') }}" method = "post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
+              <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="secretaria@senai.com">
+              <div id="emailHelp" class="form-text">Nós nunca iremos compartilhar o seu email com ninguém.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Senha</label>
+              <input type="password" class="form-control" name="senha" id="senha" placeholder="********">
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="radio" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Concordo com os <a href="termos2.html" target="_blank">termos</a></label>
+            </div>
+
+            <input class="btn btn-danger" type="submit" value="Entrar"> 
+          </form>
+
+          <hr>
+
+          <div class="container-cadastro-login">
+            <p class="form-label">Caso ainda não tenha um login, selecione o seu respectivo objetivo: </p>
+            <div class="cadastro-login">
+              <a href="/cadastrar_aluno" class="btn btn-outline-danger">Cadastro de Aluno</a>
+              <a href="/cadastrar_professor" class="btn btn-outline-danger">Cadastro de Professor</a>
+            </div>
+
+          </div>
+
+          
+    </div>
+</div>
+{{data}}
+{{erro}}
+{% include 'footer.html' %}

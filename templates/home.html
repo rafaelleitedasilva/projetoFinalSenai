@@ -1,0 +1,108 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<!-- Content -->
+  <div class="filtro">
+    <div class="dropdown">
+      <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filtroCurso">
+        Cursos
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" onclick="cursosDP('Des. DE Sistemas')">Des. de Sistemas</a></li>
+        <li><a class="dropdown-item" onclick="cursosDP('Elétrica')">Elétrica</a></li>
+        <li><a class="dropdown-item" onclick="cursosDP('Ferramentaria')">Ferramentaria</a></li>
+      </ul>
+    </div>
+  </div>
+
+<h1>3º Termo</h1>
+  <div class="row mb-5">
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="flex-row">
+            <div class="flex-column">
+              <p class="abv-mat">IDM</p>
+            </div>
+            <div class="flex-column">
+              <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+              <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+          <a href="{{ url_for('acervo') }}" class="card-link">Acervo de materias didáticos</a>
+          <a href="{{ url_for('tarefas') }}" class="card-link">Tarefas</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="flex-row">
+            <div class="flex-column">
+              <p class="abv-mat">IDM</p>
+            </div>
+            <div class="flex-column">
+              <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+              <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+          <a href="{{ url_for('acervo') }}" class="card-link">Posts</a>
+          <a href="{{ url_for('tarefas') }}" class="card-link">Tarefas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h1>2º Termo</h1>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            <a href="javascript:void(0);" class="card-link">Acervo de materiais</a>
+            <a href="javascript:void(0);" class="card-link">Tarefas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <h1>1º Termo</h1>
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="flex-row">
+              <div class="flex-column">
+                <p class="abv-mat">IDM</p>
+              </div>
+              <div class="flex-column">
+                <h5 class="card-title">Interface para Dispositivos Móveis</h5>
+                <h6 class="card-subtitle text-muted">Turma MDSI25</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime rerum doloremque distinctio dolorum mollitia, ab, accusantium quam ad praesentium, aliquam doloribus eaque repellat voluptas fugit. Incidunt fugiat obcaecati expedita rem! lore</p>
+            <a href="javascript:void(0);" class="card-link">Posts</a>
+            <a href="javascript:void(0);" class="card-link">Tarefas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%endblock %}

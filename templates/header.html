@@ -1,0 +1,134 @@
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+  <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+      <a href="/" class="app-brand-link" id="profileMenu">
+        <span class="app-brand-logo demo">
+          <img src="{{url_for('static', filename='vendor/img/EduTech.jpeg')}}" width="200px" alt="">
+        </span>
+  </a>
+  
+  <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+  </a>
+</div>
+
+<div class="menu-inner-shadow"></div>
+
+<ul class="menu-inner py-1">
+  <!-- Dashboard -->
+  <li class="menu-item">
+    <a href="/" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+      <div data-i18n="Analytics">Home</div>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="/calendar" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-layout"></i>
+      <div data-i18n="Analytics">Agenda</div>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="/chat" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-layout"></i>
+      <div data-i18n="Analytics">Chat</div>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="/dashboard" class="menu-link">
+      <i class="bx bx-cog me-2"></i>
+      <div data-i18n="Analytics">Dashboard</div>
+    </a>
+  </li>
+  
+  <!-- Layouts -->
+  <li class="menu-item">
+    <a href="/calendar" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-layout"></i>
+      <div data-i18n="Layouts">Agenda</div>
+    </a>
+    
+    <ul class="menu-sub">
+      <li class="menu-item">
+        <a href="layouts-without-menu.html" class="menu-link">
+          <div data-i18n="Without menu">Without menu</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="layouts-without-navbar.html" class="menu-link">
+          <div data-i18n="Without navbar">Without navbar</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="layouts-container.html" class="menu-link">
+          <div data-i18n="Container">Container</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="layouts-fluid.html" class="menu-link">
+          <div data-i18n="Fluid">Fluid</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="layouts-blank.html" class="menu-link">
+          <div data-i18n="Blank">Blank</div>
+        </a>
+      </li>
+    </ul>
+  </li>
+  
+  <!-- <li class="menu-header small text-uppercase">
+    <span class="menu-header-text">Pages</span>
+  </li> -->
+  <li class="menu-item">
+    <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+      <div data-i18n="Analytics">Atividades</div>
+    </a>
+    <ul class="menu-sub">
+      <li class="menu-item">
+        <a href="/tarefas" class="menu-link">
+          <div data-i18n="Basic">Tarefas</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="/acervo-de-materiais-didaticos" class="menu-link">
+          <div data-i18n="Basic">Acervo de materiais didáticos</div>
+        </a>
+      </li> 
+    </ul>
+  </li>
+  <li class="menu-item">
+    <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <i class="bx bx-user me-2"></i>
+      <div data-i18n="Authentications"> Perfil</div>
+    </a>
+    <ul class="menu-sub">
+      <li class="menu-item">
+        <!--  mudar de acordo c usr -->
+      {% if usuario == 'professor' %}
+      <li class="menu-item">
+        <a href="/perfilProfessor" class="menu-link">
+          <div data-i18n="Basic">Editar</div>
+        </a>
+      </li>
+      {% endif%}
+      {% if usuario == 'aluno' %}
+      <li class="menu-item">
+        <a href="/perfilAluno" class="menu-link">
+          <div data-i18n="Basic">Editar</div>
+        </a>
+      </li>
+      {% endif%}
+      
+      <li class="menu-item">
+        <a href="/login" class="menu-link">
+          <div data-i18n="Basic">Log out</div>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+</aside>
+<div class="layout-page">
