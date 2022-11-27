@@ -16,6 +16,18 @@
     border-radius: 10px;
 } */
 
+.comment-button{
+    border: none;
+    padding: 0px;
+}
+
+.input-group{
+    display: block;
+    width: 98% !important;
+    margin: auto;
+}
+
+
 .carrossel-container-card>h1{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
@@ -24,7 +36,7 @@
 
 .justify-content-space-between{
     display: flex !important;
-    width: 100% !important;
+    width:  !important;
     align-items: center;
     justify-content: space-between !important;
 }

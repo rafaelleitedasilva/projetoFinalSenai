@@ -71,7 +71,11 @@
     <button onclick="Acervo()" class="desactivate" id="Acervo">
         Acervo
     </button>
+    <button onclick="Laboratorio()" class="desactivate" id="Acervo">
+        Laboratório
+    </button>
 </div>
+<!-- TAREFA -->
 <div class="flex-row" id="tarefa">
     <div class="flex-column">
         <div class="card h-100 w-100">
@@ -97,7 +101,7 @@
                 <div class="d-flex w-100 wrap">
                     <div class="ml-2 mt-2">
                         <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
-                        <p class="ml-2"> Professor, não entendi o que é uma instância de dados no slide 7!</p>
+                        <p class="ml-2"> A data de nascimento é um atributo?!</p>
                     </div>
                     <div class="ml-2">
                         <h6><span class="fw-semibold d-block">Ailton:</span></h6>
@@ -109,9 +113,14 @@
                     </div>
                 </div>
             </div>
-            <form action="" class="m-2">
-                <input placeholder="Escreva o seu comentário..." type="text" class="form-control" id="usr">
-            </form>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                  </svg></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Deixe seu comentário..." aria-label="Username" aria-describedby="basic-addon1">
+              </div>
         </div>
     </div>
     <div class="flex-column">
@@ -132,29 +141,19 @@
                 <p class="card-text text-justify">Uma floricultura deseja informatizar suas operações. Inicialmente, deseja manter um cadastro de todos os seus clientes, mantendo informações como: RG, nome, telefone e endereço. Deseja também manter um cadastro contendo informações sobre os produtos que vende, tais como: nome do produto, tipo (flor, vaso, planta,...), preço e quantidade em estoque. Quando um cliente faz uma compra, a mesma é armazenada, mantendo informação sobre o cliente que fez a compra, a data da compra, o valor total e os produtos comprados</p>
             </div>
             <hr>
-            <div class="coments-group p-2">
-                <h2 class="m-2">Comentários</h2>
-                <div class="d-flex w-100 wrap">
-                    <div class="ml-2 mt-2">
-                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
-                        <p class="ml-2"> Professor, não entendi o que é uma instância de dados no slide 7!</p>
-                    </div>
-                    <div class="ml-2">
-                        <h6><span class="fw-semibold d-block">Ailton:</span></h6>
-                        <p class="ml-2"> Entre as principais funções da SGBD, estão: a lteração de estruturas de campos; edição de tabelas, eliminar e copiar dados; criar usuários e ter o controle de acessos; importação e exportação de bases de dados; e; criação de chaves primárias e externas. Ferramentas do SGBD. Existem inúmeros tipos de SGBD no mercado!</p>
-                    </div>
-                    <div class="ml-2">
-                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
-                        <p class="ml-2"> Ah entendi professor, obrigado!</p>
-                    </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                  </svg></span>
                 </div>
-            </div>
-            <form action="" class="m-2">
-                <input placeholder="Escreva o seu comentário..." type="text" class="form-control" id="usr">
-            </form>
+                <input type="text" class="form-control" placeholder="Deixe seu comentário..." aria-label="Username" aria-describedby="basic-addon1">
+              </div>
         </div>
     </div>
 </div>
+
+<!-- ACERVO -->
 
 <div class="None" id="acervo">
     <div class="flex-column w-100">
@@ -166,7 +165,7 @@
                     <div class="card h-100" style="box-shadow: none;">
                         <div class="card-body">
                             <div class="flex-row">
-                                <div class="flex-column">
+                                <div class="flex-column  w-100">
                                     <div class="justify-content-space-between">
                                         <span class="abv-mat">PPTX</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -175,7 +174,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="flex-column">
+                                <div class="flex-column  w-100">
                                     <h5 class="card-title">Slide aula de Banco de Dados</h5>
                                     <h6 class="card-subtitle text-muted">23.4 mb</h6>
                                 </div>
@@ -188,7 +187,7 @@
                     <div class="card h-100" style="box-shadow: none;">
                         <div class="card-body">
                             <div class="flex-row">
-                                <div class="flex-column">
+                                <div class="flex-column w-100">
                                     <div class="justify-content-space-between">
                                         <span class="abv-mat">PPTX</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -197,7 +196,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="flex-column">
+                                <div class="flex-column w-100">
                                     <h5 class="card-title">PDF sobre T-SQL</h5>
                                     <h6 class="card-subtitle text-muted">7.4 mb</h6>
                                 </div>
@@ -210,7 +209,7 @@
                     <div class="card h-100" style="box-shadow: none;">
                         <div class="card-body">
                             <div class="flex-row">
-                                <div class="flex-column">
+                                <div class="flex-column  w-100">
                                     <div class="justify-content-space-between">
                                         <span class="abv-mat">PPTX</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -219,7 +218,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="flex-column">
+                                <div class="flex-column  w-100">
                                     <h5 class="card-title">Slide sobre SGBD</h5>
                                     <h6 class="card-subtitle text-muted">43.4 mb</h6>
                                 </div>
@@ -253,6 +252,8 @@
     </div>
 </div>
 </div>
+
+<!-- LABORATÓRIO -->
 
 <script>
     //variaveis de contagem da direção
