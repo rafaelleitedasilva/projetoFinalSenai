@@ -1,0 +1,508 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<style>
+    #carrossel {
+        position: absolute;
+        margin-top: 10px;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    #container {
+        position: absolute;
+        width: auto;
+        padding: 0px 30px;
+        height: 100%;
+        display: inline-flex;
+        transition: 0.6s ease-in-out;
+    }
+    
+    #container> #item {
+        position: relative;
+        margin: 0 7px;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+    }
+    
+    #container #item img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #btnleft {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 100%;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    #btnright {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    #container #limitador {
+        position: absolute;
+        margin: 0 7px;
+        width: 150px;
+        height: 100%;
+        opacity: 0;
+        right: 0;
+        z-index: 1;
+    }
+    #myframe{
+        border: 0.5px solid grey;
+        height: 900px;
+    }
+    .lab{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-align: center;
+    }
+    
+</style>
+<!-- Content -->
+<div class="menu-top">
+    <button onclick="Tarefas()" class="activate" id="Tarefa">
+        Tarefas
+    </button>
+    <button onclick="Acervo()" class="desactivate" id="Acervo">
+        Acervo
+    </button>
+    <button onclick="Laboratorio()" class="desactivate" id="Laboratorio">
+        Laboratório
+    </button>
+</div>
+<!-- TAREFA -->
+<div class="flex-row" id="tarefa">
+    <div class="flex-column">
+        {% if usuario == 'professor' %}
+                <div class="cadastro-login">
+                    <a href="/inserir-tarefa" class="btn btn-outline-danger">Enviar tarefa</a>
+                </div>
+        {% endif %}
+        <div class="card h-100 w-100">
+            <div class="card-body">
+                <div class="flex-row">
+                    <div class="flex-column">
+                        <p class="abv-mat">BD</p>
+                    </div>
+                    <div class="flex-column">
+                        <h5 class="card-title">Ailton Adamilton Hamilton</h5>
+                        <h6 class="card-subtitle text-muted">25/10/2022</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>Exercício de Modelagem de Dados 2</h5>
+                <p class="card-text text-justify">Um berçário deseja informatizar suas operações. Quando um bebê nasce, algumas informações são armazenadas sobre ele, tais como: nome, data do nascimento, peso do nascimento, altura, a mãe deste bebê e o médico que fez seu parto. Para as mães, o berçário também deseja manter um controle, guardando informações como: nome, endereço, telefone e data de nascimento. Para os médicos, é importante saber: CRM, nome, telefone celular e especialidade
+                </p>
+            </div>
+            <hr>
+            <div class="coments-group p-2">
+                <h2 class="m-2">Comentários</h2>
+                <div class="d-flex w-100 wrap">
+                    <div class="ml-2 mt-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> A data de nascimento é um atributo?!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Ailton:</span></h6>
+                        <p class="ml-2"> Entre as principais funções da SGBD, estão: a lteração de estruturas de campos; edição de tabelas, eliminar e copiar dados; criar usuários e ter o controle de acessos; importação e exportação de bases de dados; e; criação de chaves primárias e externas. Ferramentas do SGBD. Existem inúmeros tipos de SGBD no mercado!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> Ah entendi professor, obrigado!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                    </svg></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Deixe seu comentário..." aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
+    <div class="flex-column">
+        <div class="card h-100 w-100">
+            <div class="card-body">
+                <div class="flex-row">
+                    <div class="flex-column">
+                        <p class="abv-mat">BD</p>
+                    </div>
+                    <div class="flex-column">
+                        <h5 class="card-title">Ailton Adamilton Hamilton</h5>
+                        <h6 class="card-subtitle text-muted">25/10/2022</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>Exercício de Modelagem de Dados 1</h5>
+                <p class="card-text text-justify">Uma floricultura deseja informatizar suas operações. Inicialmente, deseja manter um cadastro de todos os seus clientes, mantendo informações como: RG, nome, telefone e endereço. Deseja também manter um cadastro contendo informações sobre os produtos que vende, tais como: nome do produto, tipo (flor, vaso, planta,...), preço e quantidade em estoque. Quando um cliente faz uma compra, a mesma é armazenada, mantendo informação sobre o cliente que fez a compra, a data da compra, o valor total e os produtos comprados</p>
+            </div>
+            <hr>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                    </svg></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Deixe seu comentário..." aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ACERVO -->
+
+<div class="None" id="acervo">
+    <div class="flex-column w-100">
+        <div class="card h-100 carrossel-container-card">
+            <h1 class="m-3">Acervo</h1>
+            <div class="row mb-5">
+                {% if usuario == 'professor' %}
+                <div class="cadastro-login">
+                    <a href="/inserir-material" class="btn btn-outline-danger">Enviar material</a>
+                </div>
+                {% endif %}
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column  w-100">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column  w-100">
+                                    <h5 class="card-title">Slide aula de Banco de Dados</h5>
+                                    <h6 class="card-subtitle text-muted">23.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column w-100">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column w-100">
+                                    <h5 class="card-title">PDF sobre T-SQL</h5>
+                                    <h6 class="card-subtitle text-muted">7.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
+                    <div class="card h-100" style="box-shadow: none;">
+                        <div class="card-body">
+                            <div class="flex-row">
+                                <div class="flex-column  w-100">
+                                    <div class="justify-content-space-between">
+                                        <span class="abv-mat">PPTX</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-column  w-100">
+                                    <h5 class="card-title">Slide sobre SGBD</h5>
+                                    <h6 class="card-subtitle text-muted">43.4 mb</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <H4 style="margin-left:20px ;">Apostilas do Curso:</H4>
+            <div class="carrossel-div">
+                <div id='carrossel'>
+                    <button type='button' id='btnleft'><</button>
+                    <div id='container'>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
+                        <div id='limitador'>Limitador</div>
+                    </div>
+                    <button type='button' id='btnright'>></button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    {% for data in divs %}
+    <div class="col-md-14 mb-3 posts">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="flex-row">
+                    <div class="flex-column">
+                        <p class="abv-mat">{{data[3]}}</p>
+                    </div>
+                    <div class="flex-column">
+                        <h5 class="card-title">{{data[4]}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-justify">{{data[2]}}</p>
+                <iframe class="scribd_iframe_embed" title="110228_-_aula-1_introdução_ao_sgbd" src="../static/uploads/{{data[1]}}" tabindex="0" data-auto-height="true" data-aspect-ratio="null" scrolling="no" width="100%" height="600"></iframe>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+</div>
+<!-- LABORATÓRIO -->
+<div class="None" id="laboratorio">
+    <div class="flex-column w-100">
+        <div class="card h-100 w-100 p-5">
+            <h1 class="mb-3 lab">LABORATÓRIO</h1>
+            <textarea placeholder="Coloque o seu código aqui..." class="mb-2" rows="10">
+
+                <!-- CÓDIGO DE EXEMPLO -->
+                <!DOCTYPE html>
+                <html lang="en" dir="ltr">
+                  <head>
+                    <meta charset="utf-8">
+                    <title>Dynamic Calendar JavaScript | CodingNepal</title>
+                    <link rel="stylesheet" href="../static/css/style1.css">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+                    <script src="../static/js/script.js" defer></script>
+                  </head>
+                  <body>
+                    <div class="wrapper">
+                      <header>
+                        <p class="current-date"></p>
+                        <div class="icons">
+                          <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                          <span id="next" class="material-symbols-rounded">chevron_right</span>
+                        </div>
+                      </header>
+                      <div class="calendar">
+                        <ul class="weeks">
+                          <li>Sun</li>
+                          <li>Mon</li>
+                          <li>Tue</li>
+                          <li>Wed</li>
+                          <li>Thu</li>
+                          <li>Fri</li>
+                          <li>Sat</li>
+                        </ul>
+                        <ul class="days"></ul>
+                      </div>
+                    </div>
+                    
+                  </body>
+                </html>
+            
+            </textarea>
+            <div class="flex-row justify-content-space-between">
+                <button type="button" class="btn btn-dark w-25" onclick="updateIframe()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                  </svg>
+                  </svg></button>
+                  <button type="button" class="btn btn-secondary w-25" onclick="updateIframe()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                  </svg> Enviar por Email</button>
+            </div>
+            <h4 class="m-3 text-center text-uppercase">resultado</h4>
+            <iframe id="myframe"> </iframe>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    //variaveis de contagem da direção
+    
+    var num = 150;
+    var num2 = 150;
+    
+    //slide do botão direito
+    
+    var btnRight = document.getElementById('btnright');
+    
+    btnRight.addEventListener('click', () => {
+        
+        var limi = document.getElementById('limitador').getBoundingClientRect().left;
+        
+        var limit = Math.round(limi);
+        
+        var er = document.getElementById('btnright').getBoundingClientRect().left;
+        
+        var ref = Math.round(er);
+        
+        var slideContainer = document.getElementById('container');
+        
+        var carrossel = document.getElementById('carrossel');
+        
+        
+        if (limit > ref) {
+            
+            slideContainer.style.transform = 'translateX(-' + num + 'px)';
+            
+            num = num + 150;
+            
+            num2 = num2 - 150;
+            
+        } else {
+            
+            var stoped = ref * slideContainer.clientWidth / carrossel.clientWidth - carrossel.clientWidth + 100;
+            
+            var stopedRound = Mtah.round(stoped);
+            
+            slideContainer.style.transform = 'translateX(-' + stopedRound + 'px)';
+            
+            
+        }
+        
+        
+    });
+    
+    
+    //slide botão esquerdo
+    
+    var btnLeft = document.getElementById('btnleft');
+    
+    btnLeft.addEventListener('click', () => {
+        
+        
+        var limi = document.getElementById('limitador').getBoundingClientRect().left;
+        
+        var limit = Math.round(limi);
+        
+        var er = document.getElementById('btnleft').getBoundingClientRect().left;
+        
+        var ref = Math.round(er);
+        
+        var slideContainer = document.getElementById('container');
+        
+        var carrossel = document.getElementById('carrsossel');
+        
+        var slide = slideContainer.getBoundingClientRect().left;
+        
+        if (slide < ref) {
+            
+            slideContainer.style.transform = 'translateX(' + num2 + 'px)';
+            
+            num = num - 150;
+            num2 = num2 + 150;
+            
+        } else {
+            
+            slideContainer.style.transform = 'translateX(0)';
+            
+            num = 150;
+            
+        }
+        
+        
+    });
+</script>
+
+<!-- SCRIPT DO LABORATÓRIO -->
+<script type="text/javascript">
+    function updateIframe(){
+        var myFrame = $("#myframe").contents().find('body');
+        var textareaValue = $("textarea").val();
+        myFrame.html(textareaValue);
+    }
+</script>
+
+
+<script>
+    function Acervo(){
+        let botaoAcervo = document.getElementById('Acervo');
+        let botaoTarefa = document.getElementById('Tarefa');
+        let botaoLaboratorio = document.getElementById('Laboratorio');
+        
+        let Acervo = document.getElementById('acervo')
+        let Tarefa = document.getElementById('tarefa')
+        let Laboratorio = document.getElementById('laboratorio')
+        
+        botaoAcervo.className = 'activate';
+        botaoTarefa.className = 'desactivate';
+        botaoLaboratorio.className = 'desactivate'
+        
+        Acervo.className="flex-row"
+        Tarefa.className="none"
+        Laboratorio.className="none"
+    }
+    
+    function Tarefas(){
+        let botaoAcervo = document.getElementById('Acervo');
+        let botaoTarefa = document.getElementById('Tarefa');
+        let botaoLaboratorio = document.getElementById('Laboratorio');
+        
+        let Acervo = document.getElementById('acervo')
+        let Tarefa = document.getElementById('tarefa')
+        let Laboratorio = document.getElementById('laboratorio')
+        
+        botaoAcervo.className = 'desactivate';
+        botaoTarefa.className = 'activate';
+        botaoLaboratorio.className = 'desactivate'
+        
+        Acervo.className="none"
+        Tarefa.className="flex-row"
+        Laboratorio.className="none"
+    }
+    
+    function Laboratorio(){
+        let botaoAcervo = document.getElementById('Acervo');
+        let botaoTarefa = document.getElementById('Tarefa');
+        let botaoLaboratorio = document.getElementById('Laboratorio');
+        
+        let Acervo = document.getElementById('acervo')
+        let Tarefa = document.getElementById('tarefa')
+        let Laboratorio = document.getElementById('laboratorio')
+        
+        botaoAcervo.className = 'desactivate';
+        botaoTarefa.className = 'desactivate';
+        botaoLaboratorio.className = 'activate'
+        
+        Acervo.className="none"
+        Tarefa.className="none"
+        Laboratorio.className="flex-row"
+    }
+</script>
+{%endblock %}

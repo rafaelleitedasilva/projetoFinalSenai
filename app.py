@@ -144,6 +144,13 @@ def idm():
     print(usuario, 'usuario tela acervo')
     return render_template('idm.html', divs = divs, usuario = usuario)
 
+@app.route('/pwfe')
+def pwfe():
+    curso = 'pwfe'
+    divs = get_data(curso = curso) # fazer um parametreo no get_data p receber o curso no select
+    usuario = get_user()
+    print(usuario, 'usuario tela acervo')
+    return render_template('pwfe.html', divs = divs, usuario = usuario)
 
 @app.route('/tarefaAcervo')
 def tarefas():
@@ -168,6 +175,7 @@ def get_user():
 
 @app.route('/inserir-material')
 def insert_screen():
+    
     return render_template('send_files.html')
 
 @app.route('/upload_acervo', methods = ['POST', 'GET'])
@@ -186,11 +194,11 @@ def upload_acervo():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-                cur.execute("INSERT INTO acervo (file_name, descricao, disciplina, professor) VALUES (%s, %s, %s, %s)",[filename, desc, disc, professor ])
+                cur.execute("INSERT INTO acervo_{} (file_name, descricao, disciplina, professor) VALUES (%s, %s, %s, %s)".format(disc),[filename, desc, disc, professor ])
                 mysql.connection.commit()
             print(file)
         cur.close()   
-    return redirect('/tarefaAcervo')
+    return redirect('/{}'.format(disc))
 
 def get_info_professor(email, senha):
     cursor= mysql.connection.cursor()
