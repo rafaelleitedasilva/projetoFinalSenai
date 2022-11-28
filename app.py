@@ -19,16 +19,15 @@ io = SocketIO(app)
 
 #- criando a conexao com o banco
 mysql = MySQL(app)
-# app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
-# app.config['MYSQL_USER'] = 'bee0845ec95fd8'
-# app.config['MYSQL_PASSWORD'] = 'senai125_diadema'
-# app.config['MYSQL_PASSWORD'] = '1f0584b3'
+app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+app.config['MYSQL_USER'] = 'be833ebed6b2ed'
+app.config['MYSQL_PASSWORD'] = 'b43c3668'
+app.config['MYSQL_DB'] = 'heroku_3624ff9c487b5c5'
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-
-app.config['MYSQL_DB'] = 'eductech'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'eductech'
 # lists data        
 dados_aluno = []
 dados_prof = []
@@ -70,9 +69,15 @@ def cadastroProfessor():
 def calendario():
     return render_template('calendar.html')
 
-@app.route('/chat')
-def chat():
+@app.route('/chat', methods = ['POST', 'GET'])
+def chat():    
     return render_template('chat.html')
+
+def selecionaDadosChat():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT id, nome from cadastro_aluno')
+    contatos = cursor.fetchall()
+    return contatos
 
 @app.route('/dashboard')
 def dashboard():
@@ -97,7 +102,7 @@ def perfilAluno():
             nm_mae =  request.form['nome_mae']
             cursor= mysql.connection.cursor()
             
-            sql_update_qr =  """Update eductech.cadastro_aluno set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s,Nome_pai=%s, Nome_mae=%s, Endereco=%s, Telefone=%s, email=%s, senha=%s where RA = %s""" 
+            sql_update_qr =  """Update heroku_3624ff9c487b5c5.cadastro_aluno set nome = %s, rg=%s, cpf=%s, data_nascimento=%s, sexo=%s,nome_pai=%s, nome_mae=%s, endereco=%s, telefone=%s, email=%s, senha=%s where ra = %s""" 
             data_qr = (nome, rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha, ra_)
             cursor.execute(sql_update_qr, data_qr)
 
@@ -126,7 +131,7 @@ def perfilProfessor():
             disc =  request.form['disc']
             cursor= mysql.connection.cursor()
             
-            sql_update_qr =  """Update eductech.cadastro_professor set Nome = %s, RG=%s, CPF=%s, Data_Nascimento=%s, Sexo=%s, Endereco=%s, Telefone=%s, email=%s, senha=%s, Nome_Disciplina, Formacao where nif = %s""" 
+            sql_update_qr =  """Update heroku_3624ff9c487b5c5.cadastro_professor set nome = %s, rg=%s, cpf=%s, data_nascimento=%s, sexo=%s, endereco=%s, telefone=%s, email=%s, senha=%s, nome_disciplina, formacao where nif = %s""" 
             data_qr = (nome, rg, cpf, dt_nasc, sexo, end, tel, email, senha,disc, formacao, nif)
             cursor.execute(sql_update_qr, data_qr)
 
@@ -199,7 +204,7 @@ def login_screen():
         cursor= mysql.connection.cursor()
         
         if 'professor' in email:
-            cursor.execute("SELECT * from eductech.cadastro_professor WHERE email = '{}' AND senha = '{}'".format(email, senha))
+            cursor.execute("SELECT * from heroku_3624ff9c487b5c5.cadastro_professor WHERE email = '{}' AND senha = '{}'".format(email, senha))
             dados = cursor.fetchone()
             dados_prof.append(dados)
             usr.append('professor')
@@ -216,7 +221,7 @@ def login_screen():
                 msg = 'erro '                
                 return render_template('login.html', data=msg, erro = e)
         elif 'aluno' in email:
-            cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
+            cursor.execute("SELECT * from heroku_3624ff9c487b5c5.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
             dados = cursor.fetchone()
             dados_aluno.append(dados)
             usr.append('aluno')
@@ -250,10 +255,10 @@ def insertAluno():
             nm_mae =  request.form['nome_mae']
             cursor2 = mysql.connection.cursor()
             cursor2.execute(
-                "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                "INSERT INTO heroku_3624ff9c487b5c5.cadastro_aluno (nome, rg, cpf, data_nascimento, sexo, nome_pai, nome_mae, endereco, telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
-            return render_template('login.html')
+            return render_template('home.html')
             
         except:
             print('deu erro')
@@ -277,11 +282,11 @@ def insertProfessor():
 
             cursor = mysql.connection.cursor()
             cursor.execute(
-                "INSERT INTO eductech.cadastro_professor (Nome, Formacao, Data_Nascimento,CPF, RG, Endereco, Sexo, Telefone, Email, Senha, Nome_Disciplina) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                "INSERT INTO heroku_3624ff9c487b5c5.cadastro_professor (nome, formacao, data_nascimento, cpf, rg, endereco, sexo, telefone, email, senha, nome_disciplina) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,formacao, dt_nasc,cpf, rg, end, sexo,tel, email, senha, disciplina)
             )
             mysql.connection.commit()
-            return render_template('login.html')
+            return render_template('home.html')
             
         except Exception as e:
             print(f'deu erro {e}')

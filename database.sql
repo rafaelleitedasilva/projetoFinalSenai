@@ -45,6 +45,7 @@ CREATE TABLE `eductech`.`cadastro_professor` (
   /*FK*/ 
   `Nome_Disciplina`	VARCHAR(50),
   PRIMARY KEY (`NIF`));
+  
 CREATE TABLE `eductech`.`calendario` (
   `ID_Calendario` INT,
   `Data_Emissao` DATE NOT NULL,
@@ -52,14 +53,12 @@ CREATE TABLE `eductech`.`calendario` (
   `Anotacao` VARCHAR(1000) NULL,
   /*FK*/ 
   `RA` INT NOT NULL,
-  `NIF` VARCHAR(9) NOT NUll,
-  `Sigla` VARCHAR(50),
+  `NIF` VARCHAR(9) NOT NUll
   PRIMARY KEY (`ID_Calendario`));
   
 CREATE TABLE `eductech`.`disciplinas` (
   `Nome_Disciplina` VARCHAR(50) NOT NULL,
   /*FK*/ 
-  `Sigla` VARCHAR(9) NOT NULL,
   `Nome_Curso` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Nome_Disciplina`));
 select * from eductech.teste_post;
