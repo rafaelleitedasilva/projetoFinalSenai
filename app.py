@@ -136,16 +136,25 @@ def perfilProfessor():
 def posts():
     return render_template('posts.html')
 
+@app.route('/idm')
+def idm():
+    curso = 'idm'
+    divs = get_data(curso = curso) # fazer um parametreo no get_data p receber o curso no select
+    usuario = get_user()
+    print(usuario, 'usuario tela acervo')
+    return render_template('idm.html', divs = divs, usuario = usuario)
+
+
 @app.route('/tarefaAcervo')
 def tarefas():
-    divs = get_data()
+    divs = get_data() # fazer um parametreo no get_data p receber o curso no select
     usuario = get_user()
     print(usuario, 'usuario tela acervo     ')
     return render_template('tarefaAcervo.html', divs = divs, usuario = usuario)
 
-def get_data():
+def get_data(curso):
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * from acervo')
+    cursor.execute("SELECT * from acervo_{}".format(curso))
     rows = cursor.fetchall()    
     return rows
 
