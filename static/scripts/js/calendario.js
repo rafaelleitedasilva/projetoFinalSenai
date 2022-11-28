@@ -173,7 +173,7 @@ function new_event_json(name, count, date, day) {
 }
 
 // Display all events of the selected date in card views
-function show_events(events, month, day) {
+function show_events(events, month, day, year) {
     // Clear the dates container
     $(".events-container").empty();
     $(".events-container").show(250);
@@ -308,18 +308,18 @@ var event_data = {
 };
 
 const months = [ 
-    "Janeiro", 
-    "Fevereiro", 
-    "Março", 
-    "Abril", 
-    "Maio", 
-    "Junho", 
-    "Julho", 
-    "Agosto", 
-    "Setembro", 
-    "Outubro", 
-    "Novembro", 
-    "Dezembro" 
+    "janeiro", 
+    "fevereiro", 
+    "março", 
+    "abril", 
+    "maio", 
+    "junho", 
+    "julho", 
+    "agosto", 
+    "setembro", 
+    "outubro", 
+    "novembro", 
+    "dezembro" 
 ];
 
 })(jQuery);

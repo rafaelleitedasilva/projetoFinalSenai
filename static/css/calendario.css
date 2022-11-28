@@ -8301,7 +8301,7 @@ h1, h2, h3, h4, h5,
       -o-transition: none;
       transition: none; } }
   .left-button:hover, .right-button:hover {
-    color: #7e0cf5 !important; }
+    color: var(--activeLEGAL) !important; }
 
 .left-button {
   left: 0; }
