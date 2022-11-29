@@ -61,14 +61,15 @@
               </div>
             </div>
           </div>
-          <div class="chat-history">
-            <ul class="m-b-0">
+          <div class="chat-history" >
+            <ul class="m-b-0 chat-history-mb">
               <li class="clearfix">
                 <div class="message other-message float-right">
-                  Hi Aiden, how are you? How is the project coming along?
+                  Boa Noite! Tudo bem? 
                 </div>
               </li>
-                <div class="message my-message m-2">Are we meeting today?</div>
+              <li>
+                <div class="message my-message m-2">Boa Noite, tudo e com você?</div>
               </li>
             </ul>
           </div>
@@ -76,8 +77,7 @@
             <div class="chat-message clearfix">
               <div class="input-group mb-0">
                 <div class="input-group-prepend">
-                  <!--<span class="input-group-text"><i class="fa fa-send"></i></span>-->
-                  <button type="submit" class="input-group-text">Enviar</button>
+                  <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
                 </div>
                 <!--<input type="text" class="form-control" placeholder="Enter text here..."> -->
                 <input
@@ -119,8 +119,8 @@
 
     socket.on("getMessage", (msg) => {
       const span = document.createElement("div");
-      const chat = document.querySelector(".chat-history");
-      span.innerHTML = `<div class="message other-message float-right">${msg.message}</div>`;
+      const chat = document.querySelector(".chat-history-mb");
+      span.innerHTML = `<li class='clearfix m-2'><div class="message other-message float-right">${msg.message}</div></li>`;
       chat.append(span);
     });
   };

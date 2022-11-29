@@ -47,7 +47,8 @@
 
 .cadastro-login{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .container-cadastro-login{
@@ -126,7 +127,6 @@
     padding:5px;
     margin-right: 10px;
 }
-
 .btn-flex-between{
     display: flex;
     justify-content: space-between;
@@ -176,6 +176,8 @@
 
 .login{
     max-width: 400px;
+    width: 100%;
+    padding: 20px;
 }
 
 .flex-login{
@@ -228,20 +230,39 @@ a:hover{
 }
 
 .chart{
+    display: block;
     width:50%;
+    margin: auto;
 }
 
 .chart2{
     width:50%;
+    margin: auto;
 }
 
 .chart3{
     width: 50%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .chart{
+        display: block;
+        width:90%;
+    }
+    
+    .chart2{
+        width:90%;
+    }
+    
+    .chart3{
+        width: 90%;
+    }
 }
 
 #dashboard{
     display: flex;
-    width:100%;
+    flex-wrap: wrap;
     margin: 20px;
 }
 
