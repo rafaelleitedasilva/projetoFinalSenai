@@ -1,10 +1,11 @@
 import functools
-from flask import Flask,render_template, request, flash
+from flask import Flask,render_template, request, flash, send_from_directory
 from flask_mysqldb import MySQL
 from flask_socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 import os
 import urllib.request
+from pathlib import Path 
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -12,6 +13,7 @@ from flask import (
 from werkzeug.utils import secure_filename
 import os
 import urllib.request
+import wget
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -43,6 +45,7 @@ usr = []
 
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+  
   
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'pdf'])
   
@@ -163,6 +166,10 @@ def idm():
     print(usuario, 'usuario tela acervo')
     return render_template('idm.html', divs = divs, usuario = usuario)
 
+@app.route('/download/<filename>', methods = ['GET'])
+def get_file(filename): 
+    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
+
 @app.route('/pwfe')
 def pwfe():
     curso = 'pwfe'
@@ -194,27 +201,27 @@ def get_user():
 
 @app.route('/inserir-material')
 def insert_screen():
-    
     return render_template('send_files.html')
 
 @app.route('/upload_acervo', methods = ['POST', 'GET'])
 def upload_acervo():
     cur = mysql.connection.cursor()
     if request.method == 'POST':
-
         desc = request.form['descricao-material']
         disc =  request.form['disciplina']
-
         professor =  dados_prof[0][1] 
-    
         files = request.files.getlist('files[]')
+
         for file in files:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-                cur.execute("INSERT INTO acervo_{} (file_name, descricao, disciplina, professor) VALUES (%s, %s, %s, %s)".format(disc),[filename, desc, disc, professor ])
+                sz = (Path(f'static/uploads/{filename}').stat().st_size)/1000000 # em bytes
+                split_tup = os.path.splitext(f'static/uploads/{filename}')
+                file_extension = split_tup[1]
+                cur.execute("INSERT INTO acervo_{} (file_name, descricao, disciplina, professor, size, type) VALUES (%s, %s, %s, %s, %s, %s)".format(disc),[filename, desc, disc, professor, sz, file_extension])
                 mysql.connection.commit()
+                print(sz, ' é o tamnanho do arquivo')
             print(file)
         cur.close()   
     return redirect('/{}'.format(disc))
