@@ -16,22 +16,49 @@ import urllib.request
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 app = Flask(__name__)
-#- criando a conexao com o banco
-mysql = MySQL(app)
-app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
-app.config['MYSQL_USER'] = 'be833ebed6b2ed'
-app.config['MYSQL_PASSWORD'] = 'b43c3668'
-app.config['MYSQL_DB'] = 'heroku_3624ff9c487b5c5'
+io = SocketIO(app)
+#- criando a conexao com o banco -- VERSAO HEROKU
+# mysql = MySQL(app)
+# app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+# app.config['MYSQL_USER'] = 'be833ebed6b2ed'
+# app.config['MYSQL_PASSWORD'] = 'b43c3668'
+# app.config['MYSQL_DB'] = 'heroku_3624ff9c487b5c5'
 
+# app.config['MYSQL_DB'] = 'eductech'
+app.secret_key = "emanuel-gatao"
+#- criando a conexao com o banco -- VERSAO SENAI LOCAL
+mysql = MySQL(app)
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'eductech'
+
+io = SocketIO(app)
+
 # lists data
 dados_aluno = []
+dados_prof = []
 cad = []
+usr = []
+
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+  
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'pdf'])
+  
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 # -- routes
 @app.route('/')
+def login():
+    return render_template('login.html')
+
+@app.route('/home')  
 def home():
-    return render_template('home.html')
-          
+    usuario = get_user()
+    return render_template('home.html', usuario = usuario)
+
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
     return render_template('cadastroAluno.html')
@@ -214,19 +241,19 @@ def login_screen():
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
-        
-        cursor= mysql.connection.cursor()
-        cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-        dados = cursor.fetchone()
-        dados_aluno.append(dados)
-        print(dados, ' aqui é a pagina  do login ')
-        try: 
-            if dados[10]== email and dados[11] == senha:
-                return redirect(url_for('home'))  
-            else: 
-                msg = 'login nao confere'
+                
+        if 'professor' in email:
+            dados = get_info_professor(email=email, senha=senha)
+            dados_prof.append(dados)
+            usr.append('professor')
+            try: 
+                if dados[9]== email and dados[10] == senha:
+                    print('login de professor')  
+                    return redirect(url_for('home'))
+                else: 
+                    msg = 'login nao confere'
                 return render_template('login.html', data=msg)
-        except Exception as e:
+            except Exception as e:
                 msg = 'erro '                
                 return render_template('login.html', data=msg, erro = e)
 
@@ -244,23 +271,9 @@ def login_screen():
             except Exception as e:
                     msg = 'erro '                
                     return render_template('login.html', data=msg, erro = e)
-        elif 'aluno' in email:
-            cursor.execute("SELECT * from heroku_3624ff9c487b5c5.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-            dados = cursor.fetchone()
-            dados_aluno.append(dados)
-            usr.append('aluno')
-            try: 
-                if dados[10]== email and dados[11] == senha:
-                    print('login de aluno')  
-                    return redirect(url_for('home'))  
-                else: 
-                    msg = 'login nao confere'
-                    return render_template('login.html', data=msg)
-            except Exception as e:
-                    msg = 'erro '                
-                    return render_template('login.html', data=msg, erro = e)
                 
     return render_template('login.html')
+
 
 @app.route('/insert', methods = ['POST'])
 def insertAluno():
@@ -279,10 +292,10 @@ def insertAluno():
             nm_mae =  request.form['nome_mae']
             cursor2 = mysql.connection.cursor()
             cursor2.execute(
-                "INSERT INTO heroku_3624ff9c487b5c5.cadastro_aluno (nome, rg, cpf, data_nascimento, sexo, nome_pai, nome_mae, endereco, telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                "INSERT INTO eductech.cadastro_aluno (Nome, RG, CPF, Data_Nascimento, Sexo, Nome_pai, Nome_mae, Endereco, Telefone, email, senha) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,rg, cpf, dt_nasc, sexo, nm_pai, nm_mae, end, tel, email, senha))
             mysql.connection.commit()
-            return render_template('home.html')
+            return render_template('login.html')
             
         except:
             print('deu erro')
@@ -306,11 +319,11 @@ def insertProfessor():
 
             cursor = mysql.connection.cursor()
             cursor.execute(
-                "INSERT INTO heroku_3624ff9c487b5c5.cadastro_professor (nome, formacao, data_nascimento, cpf, rg, endereco, sexo, telefone, email, senha, nome_disciplina) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                "INSERT INTO eductech.cadastro_professor (Nome, Formacao, Data_Nascimento,CPF, RG, Endereco, Sexo, Telefone, Email, Senha, Nome_Disciplina) VALUES (%s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                 (nome,formacao, dt_nasc,cpf, rg, end, sexo,tel, email, senha, disciplina)
             )
             mysql.connection.commit()
-            return render_template('home.html')
+            return render_template('login.html')
             
         except Exception as e:
             print(f'deu erro {e}')
