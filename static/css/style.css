@@ -47,7 +47,8 @@
 
 .cadastro-login{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .container-cadastro-login{
@@ -126,7 +127,9 @@
     padding:5px;
     margin-right: 10px;
 }
-
+.form-control{
+    width: 100% !important;
+}
 .btn-flex-between{
     display: flex;
     justify-content: space-between;
@@ -176,6 +179,8 @@
 
 .login{
     max-width: 400px;
+    width: 100%;
+    padding: 20px;
 }
 
 .flex-login{

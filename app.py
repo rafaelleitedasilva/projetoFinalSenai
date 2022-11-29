@@ -174,7 +174,7 @@ def pwfe():
 @app.route('/tarefaAcervo')
 def tarefas():
     divs = get_data() # fazer um parametreo no get_data p receber o curso no select
-    usuario = get_user()
+    usuario = get_user() 
     print(usuario, 'usuario tela acervo     ')
     return render_template('tarefaAcervo.html', divs = divs, usuario = usuario)
 
