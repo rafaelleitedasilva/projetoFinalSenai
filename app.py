@@ -214,39 +214,24 @@ def login_screen():
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
-        
-        cursor= mysql.connection.cursor()
-        cursor.execute("SELECT * from eductech.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-        dados = cursor.fetchone()
-        dados_aluno.append(dados)
-        print(dados, ' aqui é a pagina  do login ')
-        try: 
-            if dados[10]== email and dados[11] == senha:
-                return redirect(url_for('home'))  
-            else: 
-                msg = 'login nao confere'
+                
+        if 'professor' in email:
+            dados = get_info_professor(email=email, senha=senha)
+            dados_prof.append(dados)
+            usr.append('professor')
+            try: 
+                if dados[9]== email and dados[10] == senha:
+                    print('login de professor')  
+                    return redirect(url_for('home'))
+                else: 
+                    msg = 'login nao confere'
                 return render_template('login.html', data=msg)
-        except Exception as e:
+            except Exception as e:
                 msg = 'erro '                
                 return render_template('login.html', data=msg, erro = e)
 
         elif 'aluno' in email:
             dados = get_info_aluno(email=email, senha=senha)
-            dados_aluno.append(dados)
-            usr.append('aluno')
-            try: 
-                if dados[10]== email and dados[11] == senha:
-                    print('login de aluno')  
-                    return redirect(url_for('home'))  
-                else: 
-                    msg = 'login nao confere'
-                    return render_template('login.html', data=msg)
-            except Exception as e:
-                    msg = 'erro '                
-                    return render_template('login.html', data=msg, erro = e)
-        elif 'aluno' in email:
-            cursor.execute("SELECT * from heroku_3624ff9c487b5c5.cadastro_aluno WHERE email = '{}' AND senha = '{}'".format(email, senha))
-            dados = cursor.fetchone()
             dados_aluno.append(dados)
             usr.append('aluno')
             try: 
