@@ -16,6 +16,7 @@ import urllib.request
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 app = Flask(__name__)
+io = SocketIO(app)
 #- criando a conexao com o banco
 mysql = MySQL(app)
 app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
