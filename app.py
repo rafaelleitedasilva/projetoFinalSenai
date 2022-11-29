@@ -24,14 +24,21 @@ app.config['MYSQL_PASSWORD'] = 'b43c3668'
 app.config['MYSQL_DB'] = 'heroku_3624ff9c487b5c5'
 
 app.config['MYSQL_DB'] = 'eductech'
+io = SocketIO(app)
+
 # lists data
 dados_aluno = []
 cad = []
 # -- routes
 @app.route('/')
+def login():
+    return render_template('login.html')
+
+@app.route('/home')  
 def home():
-    return render_template('home.html')
-          
+    usuario = get_user()
+    return render_template('home.html', usuario = usuario)
+
 @app.route('/cadastrar_aluno')
 def cadastroAluno():
     return render_template('cadastroAluno.html')
