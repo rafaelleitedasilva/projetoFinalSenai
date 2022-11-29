@@ -1,0 +1,31 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<!-- Content -->
+{% if usuario == 'professor' %}
+<div class="cadastro-login">
+    <a href="/inserir-material" class="btn btn-outline-danger">Enviar material</a>
+</div>
+
+{% endif %}
+{% for data in divs %}
+<div class="col-md-14 mb-3 posts">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="flex-row">
+                <div class="flex-column">
+                    <p class="abv-mat">{{data[3]}}</p>
+                </div>
+                <div class="flex-column">
+                    <h5 class="card-title">{{data[4]}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify">{{data[2]}}</p>
+            <iframe class="scribd_iframe_embed" title="110228_-_aula-1_introdução_ao_sgbd" src="../static/uploads/{{data[1]}}" tabindex="0" data-auto-height="true" data-aspect-ratio="null" scrolling="no" width="100%" height="600"></iframe>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{{data}}
+{%endblock %}   
