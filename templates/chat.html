@@ -23,18 +23,20 @@
     <div class="col-lg-12">
       <div class="card chat-app">
         <div id="plist" class="people-list">
+          {% for nomeContato in range(y) %}
           <ul class="list-unstyled chat-list mt-2 mb-0">
-            <li class="clearfix desactive div-nome" id="Ailton Gonçalves" onclick="nome('Ailton Gonçalves')">
+            <li class="clearfix">
+              <div hidden=true>{{nif[nomeContato]}}</div>
+              <img width="40px" height="40px" {{url_foto}} alt="perfil" />
               <div class="about">
-                <div class="name">Ailton Gonçalves</div>
-              </div>
-            </li>
-            <li class="clearfix active div-nome" id="Mayara Ferreira" onclick="nome('Mayara Ferreira')">
-              <div class="about">
-                <div class="name">Mayara Ferreira</div>
+                <div class="nameChat">{{nome[nomeContato]}}</div>
+                <div class="status">
+                  <i class="fa fa-circle offline"></i> left 7 mins ago
+                </div>
               </div>
             </li>
           </ul>
+          {% endfor %}
         </div>
         <script>
           function nome(param){
@@ -45,10 +47,10 @@
             nome_chat.textContent = param
 
             for(let i = 0; i < divs.length; i++){
-              divs[i].className = 'clearfix desactive div-nome'
+              divs[i].className = 'clearfix desactive div-nome chat'
             }
 
-            div.className = 'clearfix active div-nome'
+            div.className = 'clearfix active div-nome chat'
           }
         </script>
         <div class="chat">
