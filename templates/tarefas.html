@@ -1,0 +1,101 @@
+{% extends 'principal.html'%}
+{%block conteudo %}
+<!-- Content -->
+<div class="filtro">
+    <input class="btn" style="width: 60px;" type="date" name="data-filtro" id="data-filtro">
+    <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filtroCurso">
+          Matérias
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item">IDM</a></li>
+          <li><a class="dropdown-item">BD</a></li>
+          <li><a class="dropdown-item">PWFE</a></li>
+          <li><a class="dropdown-item">PWBE</a></li>
+        </ul>
+      </div>
+</div>
+<div class="flex-row">
+    <div class="flex-column">
+        <div class="card h-100 w-100">
+            <div class="card-body">
+                <div class="flex-row">
+                    <div class="flex-column">
+                        <p class="abv-mat">BD</p>
+                    </div>
+                    <div class="flex-column">
+                        <h5 class="card-title">Ailton Adamilton Hamilton</h5>
+                        <h6 class="card-subtitle text-muted">25/10/2022</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>Exercício de Modelagem de Dados 2</h5>
+                <p class="card-text text-justify">Um berçário deseja informatizar suas operações. Quando um bebê nasce, algumas informações são armazenadas sobre ele, tais como: nome, data do nascimento, peso do nascimento, altura, a mãe deste bebê e o médico que fez seu parto. Para as mães, o berçário também deseja manter um controle, guardando informações como: nome, endereço, telefone e data de nascimento. Para os médicos, é importante saber: CRM, nome, telefone celular e especialidade
+                </p>
+            </div>
+            <hr>
+            <div class="coments-group p-2">
+                <h2 class="m-2">Comentários</h2>
+                <div class="d-flex w-100 wrap">
+                    <div class="ml-2 mt-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> Professor, não entendi o que é uma instância de dados no slide 7!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Ailton:</span></h6>
+                        <p class="ml-2"> Entre as principais funções da SGBD, estão: a lteração de estruturas de campos; edição de tabelas, eliminar e copiar dados; criar usuários e ter o controle de acessos; importação e exportação de bases de dados; e; criação de chaves primárias e externas. Ferramentas do SGBD. Existem inúmeros tipos de SGBD no mercado!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> Ah entendi professor, obrigado!</p>
+                    </div>
+                </div>
+            </div>
+            <form action="" class="m-2">
+                <input placeholder="Escreva o seu comentário..." type="text" class="form-control" id="usr">
+            </form>
+        </div>
+    </div>
+    <div class="flex-column">
+        <div class="card h-100 w-100">
+            <div class="card-body">
+                <div class="flex-row">
+                    <div class="flex-column">
+                        <p class="abv-mat">BD</p>
+                    </div>
+                    <div class="flex-column">
+                        <h5 class="card-title">Ailton Adamilton Hamilton</h5>
+                        <h6 class="card-subtitle text-muted">25/10/2022</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>Exercício de Modelagem de Dados 1</h5>
+                <p class="card-text text-justify">Uma floricultura deseja informatizar suas operações. Inicialmente, deseja manter um cadastro de todos os seus clientes, mantendo informações como: RG, nome, telefone e endereço. Deseja também manter um cadastro contendo informações sobre os produtos que vende, tais como: nome do produto, tipo (flor, vaso, planta,...), preço e quantidade em estoque. Quando um cliente faz uma compra, a mesma é armazenada, mantendo informação sobre o cliente que fez a compra, a data da compra, o valor total e os produtos comprados</p>
+            </div>
+            <hr>
+            <div class="coments-group p-2">
+                <h2 class="m-2">Comentários</h2>
+                <div class="d-flex w-100 wrap">
+                    <div class="ml-2 mt-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> Professor, não entendi o que é uma instância de dados no slide 7!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Ailton:</span></h6>
+                        <p class="ml-2"> Entre as principais funções da SGBD, estão: a lteração de estruturas de campos; edição de tabelas, eliminar e copiar dados; criar usuários e ter o controle de acessos; importação e exportação de bases de dados; e; criação de chaves primárias e externas. Ferramentas do SGBD. Existem inúmeros tipos de SGBD no mercado!</p>
+                    </div>
+                    <div class="ml-2">
+                        <h6><span class="fw-semibold d-block">Manuel Gomes:</span></h6>
+                        <p class="ml-2"> Ah entendi professor, obrigado!</p>
+                    </div>
+                </div>
+            </div>
+            <form action="" class="m-2">
+                <input placeholder="Escreva o seu comentário..." type="text" class="form-control" id="usr">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock %}
