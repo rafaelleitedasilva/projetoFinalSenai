@@ -83,24 +83,11 @@
       <li class="menu-item">
         {% if usuario == 'professor' %}
       <li class="menu-item">
-        <!--  mudar de acordo c usr -->
-      {% if usuario == 'professor' %}
-      <li class="menu-item">
         <a href="/perfilProfessor" class="menu-link">
           <div data-i18n="Basic">Editar</div>
         </a>
       </li>
-      {% endif%}
-      {% if usuario == 'aluno' %}
-      <li class="menu-item">
-        <a href="/perfilAluno" class="menu-link">
-          <div data-i18n="Basic">Editar</div>
-        </a>
-      </li>
-      {% endif%}
-      </li>
-      {% endif%}
-      {% if usuario == 'aluno' %}
+      {% elif usuario == 'aluno' %}
       <li class="menu-item">
         <a href="/perfilAluno" class="menu-link">
           <div data-i18n="Basic">Editar</div>

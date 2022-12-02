@@ -179,77 +179,46 @@
                     <a href="/inserir-material" class="btn btn-outline-danger">Enviar material</a>
                 </div>
                 {% endif %}
-                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
-                    <div class="card h-100" style="box-shadow: none;">
-                        <div class="card-body">
-                            <div class="flex-row">
-                                <div class="flex-column  w-100">
-                                    <div class="justify-content-space-between">
-                                        <span class="abv-mat">PPTX</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="flex-column  w-100">
-                                    <h5 class="card-title">Slide aula de Banco de Dados</h5>
-                                    <h6 class="card-subtitle text-muted">23.4 mb</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
                 
-                <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
-                    <div class="card h-100" style="box-shadow: none;">
-                        <div class="card-body">
-                            <div class="flex-row">
-                                <div class="flex-column w-100">
-                                    <div class="justify-content-space-between">
-                                        <span class="abv-mat">PPTX</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="flex-column w-100">
-                                    <h5 class="card-title">PDF sobre T-SQL</h5>
-                                    <h6 class="card-subtitle text-muted">7.4 mb</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
+                {% for data in divs %}
                 <a class="col-md-2 col-lg-4" style="color: inherit;text-decoration: none;" href="#">
                     <div class="card h-100" style="box-shadow: none;">
                         <div class="card-body">
                             <div class="flex-row">
                                 <div class="flex-column  w-100">
                                     <div class="justify-content-space-between">
-                                        <span class="abv-mat">PPTX</span>
+                                        <span class="abv-mat">{{data[6]}}</span> <!-- tipo do arquivo-->
+                                        <!-- <span style="display:block;" id="arquivo"> {{data[1]}}</span> -->
+                                        <a href={{nomee}}>click</a>
+                                        <!-- {{nomee}} -->
+                                        <!-- <script>
+                                            let arquivo = document.getElementById('arquivo')
+                                            let a = document.getElementById('arquivo')
+                                        </script> -->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                                         </svg>
+                                       
                                     </div>
                                 </div>
+
                                 <div class="flex-column  w-100">
-                                    <h5 class="card-title">Slide sobre SGBD</h5>
-                                    <h6 class="card-subtitle text-muted">43.4 mb</h6>
+                                    <h5 class="card-title">{{data[2]}}</h5> <!-- desc do envio do arquivo-->
+                                    <h6 class="card-subtitle text-muted">{{data[5]}}</h6> <!-- tipo do arquivo-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
+               
+                {% endfor %}
             </div>
-            
+
             <H4 style="margin-left:20px ;">Apostilas do Curso:</H4>
             <div class="carrossel-div">
                 <div id='carrossel'>
-                    <button type='button' id='btnleft'><</button>
+                    <button type='button' id='btnleft'></button>
                     <div id='container'>
                         <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
                         <div id='item'><img src="{{url_for('static', filename='vendor/img/senai-book.png')}}" /></div>
@@ -268,7 +237,7 @@
             
         </div>
     </div>
-    
+<!--     
     {% for data in divs %}
     <div class="col-md-14 mb-3 posts">
         <div class="card h-100">
@@ -287,7 +256,7 @@
                 <iframe class="scribd_iframe_embed" title="110228_-_aula-1_introdução_ao_sgbd" src="../static/uploads/{{data[1]}}" tabindex="0" data-auto-height="true" data-aspect-ratio="null" scrolling="no" width="100%" height="600"></iframe>
             </div>
         </div>
-    {% endfor %}
+    {% endfor %} -->
 </div>
 
 </div>
