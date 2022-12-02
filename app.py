@@ -178,19 +178,11 @@ def idm():
 def get_file(filename): 
     return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
 
-@app.route('/pwfe')
-def pwfe():
-    curso = 'pwfe'
-    divs = get_data(curso = curso) # fazer um parametreo no get_data p receber o curso no select
-    usuario = get_user()
-    print(usuario, 'usuario tela acervo')
-    return render_template('pwfe.html', divs = divs, usuario = usuario)
 
-@app.route('/tarefaAcervo')
-def tarefas():
-    divs = get_data() # fazer um parametreo no get_data p receber o curso no select
-    usuario = get_user()
-    print(usuario, 'usuario tela acervo     ')
+@app.route('/tarefas/<tarefa>')
+def tarefas(tarefa):
+    tarefa = tarefa
+    divs = get_data(tarefa) # fazer um parametreo no get_data p receber o curso no select
     return render_template('tarefaAcervo.html', divs = divs, usuario = usuario)
 
 def get_data(curso):
