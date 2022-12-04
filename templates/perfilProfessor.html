@@ -1,11 +1,14 @@
 {% extends 'principal.html'%}
 {%block conteudo %}
+<form action = "{{url_for('perfilProfessor')}}" method = "post">
 <div class="flex-cadastro formPerfil">
   <div class="cadastro ajustePerfil">
     <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:red;">Perfil</h1>
-    <img class="perfil" src="../static/vendor/img/perfil.jpg">
-    
-    <form action = "{{url_for('perfilProfessor')}}" method = "post">
+      <img class="perfil" src="../static/vendor/img/perfil.jpg" onclick="startVideoFromCamera()">
+        <video id="video" autoplay style="position: fixed; top:15%"></video>
+          <canvas id="canvas" hidden=true></canvas>
+            <button id="tiraFoto">Tirar Foto${msg.message}</button>
+              <input id="url_imagem" type="text" hidden=true>
       <div class="mb-3">
         <label for="inome" class="form-label posts">NIF</label>
         <p class="form-control" name="ra" id="ra">{{nif}}</p>
@@ -78,4 +81,5 @@
     </form>
   </div>
 </div>
+<script src="{{url_for('static', filename='js/camera.js')}}"></script>
 {%endblock %}

@@ -11,7 +11,15 @@ body{
     position: relative;
     width: 100%;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    height: 400px;
+    max-height: 400px;
+    overflow-x: auto;
 }
+
+span {
+    width:100%;
+}
+
 .chat-app .people-list {
     width: 280px;
     position: absolute;
@@ -229,7 +237,10 @@ body{
     }
     .chat-app .chat-history {
         height: 300px;
-        overflow-x: auto
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
     }
 }
 
@@ -240,17 +251,26 @@ body{
     }
     .chat-app .chat-history {
         height: 600px;
-        overflow-x: auto
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
     }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
     .chat-app .chat-list {
         height: 480px;
-        overflow-x: auto
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
     }
     .chat-app .chat-history {
         height: calc(100vh - 350px);
-        overflow-x: auto
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
     }
 }

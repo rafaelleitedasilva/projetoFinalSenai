@@ -1,23 +1,22 @@
 {% extends 'principal.html'%} {%block conteudo %}
-<link
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  rel="stylesheet"
-/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}" />
 <style>
   .chat {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
+    flex-direction: column-reverse;
   }
 
   .chat span {
     margin-bottom: 10px;
+    flex-direction: column-reverse;
   }
 
   form {
     margin-top: 10px;
   }
 </style>
+<form action="{{url_for('chat')}}" method="POST">
 <div class="container" style="margin-top: 1%">
   <div class="row clearfix">
     <div class="col-lg-12">
@@ -65,43 +64,34 @@
           </div>
           <div class="chat-history">
             <ul class="m-b-0">
-              <li class="clearfix">
-                <div class="message other-message float-right">
-                  Hi Aiden, how are you? How is the project coming along?
+              <li class="clearfix ">
+              {% for mensagem in range(z) %}
+                <div class="message other-message float-right chat">
+                  {{minhaMensagem[mensagem]}}
                 </div>
               </li>
-                <div class="message my-message m-2">Are we meeting today?</div>
+                <span class="message my-message m-2 chat">{{outros[mensagem]}}</span>
               </li>
             </ul>
+              {% endfor %}
           </div>
-          <form action="{{url_for('chat')}}" method="POST">
-            <div class="chat-message clearfix">
+            <div class="chat-message clearfix" style="">
               <div class="input-group mb-0">
                 <div class="input-group-prepend">
                   <!--<span class="input-group-text"><i class="fa fa-send"></i></span>-->
                   <button type="submit" class="input-group-text">Enviar</button>
                 </div>
                 <!--<input type="text" class="form-control" placeholder="Enter text here..."> -->
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Mensagem"
-                />
+                <input class="form-control" type="text" placeholder="Mensagem" onclick="{{enviaMensagem}}"/>
               </div>
             </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
-<div class="chat"></div>
-<div></div>
+</form>
 
-<script
-  src="https://cdn.socket.io/4.5.4/socket.io.min.js"
-  integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
-  crossorigin="anonymous"
-></script>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
 <script>
   window.onload = function () {
     const socket = io("http://127.0.0.1:5000");
@@ -122,9 +112,10 @@
     socket.on("getMessage", (msg) => {
       const span = document.createElement("div");
       const chat = document.querySelector(".chat-history");
-      span.innerHTML = `<div class="message other-message float-right">${msg.message}</div>`;
+      span.innerHTML = `<input id="mensagem2" value="${msg.message}"><span class="message other-message float-right chat" style="margin-top:3%" id="mensagem">${msg.message}</span>`;
       chat.append(span);
     });
   };
 </script>
+
 {%endblock %}

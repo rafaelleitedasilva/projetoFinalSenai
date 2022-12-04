@@ -4,3 +4,5 @@ pip install Flask
 pip install flask_mysqldb
 pip install flask_socketio
 pip install gevent gevent-websocket
+pip install numpy 
+pip install opencv-python
